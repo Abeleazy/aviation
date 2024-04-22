@@ -93,7 +93,7 @@ const router = createBrowserRouter([
         element: <DashboardSass />,
       },
       {
-        path: "/statistics",
+        path: "/manifest",
         element: <Statistics />,
       },
       {
@@ -117,7 +117,7 @@ const router = createBrowserRouter([
         element: <Pricing />,
       },
       {
-        path: "/teams",
+        path: "/contracts",
         element: <Teams />,
       },
       {
@@ -141,7 +141,11 @@ const router = createBrowserRouter([
         element: <Notifications />,
       },
       {
-        path: "/user",
+        path: "/customers",
+        element: <Users />,
+      },
+      {
+        path: "/airlines",
         element: <Users />,
       },
 

@@ -15,7 +15,7 @@ function Home() {
       <BodyWrapper>
         <ProgressCom />
         <SalesCharts />
-        <AnalyticsConversions />
+        {/* <AnalyticsConversions /> */}
         <ActivitySection />
       </BodyWrapper>
       <Sidebar />

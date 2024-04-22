@@ -123,10 +123,8 @@ function Menu({ toggleMenu, menu }) {
                   </span>
                 </Link>
               </li>
-              <li
-                className={location.pathname === "/statistics" ? "active" : ""}
-              >
-                <Link className="collapsed" to="/statistics">
+              <li className={location.pathname === "/airlines" ? "active" : ""}>
+                <Link className="collapsed" to="/airlines">
                   <span className="menu-bar__text">
                     <span className="crancy-menu-icon crancy-svg-icon__v1">
                       <svg
@@ -153,10 +151,8 @@ function Menu({ toggleMenu, menu }) {
                   </span>
                 </Link>
               </li>
-              <li
-                className={location.pathname === "/statistics" ? "active" : ""}
-              >
-                <Link className="collapsed" to="/statistics">
+              <li className={location.pathname === "/manifest" ? "active" : ""}>
+                <Link className="collapsed" to="/manifest">
                   <span className="menu-bar__text">
                     <span className="crancy-menu-icon crancy-svg-icon__v1">
                       <svg
@@ -184,9 +180,9 @@ function Menu({ toggleMenu, menu }) {
                 </Link>
               </li>
               <li
-                className={location.pathname === "/statistics" ? "active" : ""}
+                className={location.pathname === "/customers" ? "active" : ""}
               >
-                <Link className="collapsed" to="/statistics">
+                <Link className="collapsed" to="/customers">
                   <span className="menu-bar__text">
                     <span className="crancy-menu-icon crancy-svg-icon__v1">
                       <svg
@@ -213,10 +209,8 @@ function Menu({ toggleMenu, menu }) {
                   </span>
                 </Link>
               </li>
-              <li
-                className={location.pathname === "/statistics" ? "active" : ""}
-              >
-                <Link className="collapsed" to="/statistics">
+              <li className={location.pathname === "/claims" ? "active" : ""}>
+                <Link className="collapsed" to="/claims">
                   <span className="menu-bar__text">
                     <span className="crancy-menu-icon crancy-svg-icon__v1">
                       <svg
@@ -243,9 +237,7 @@ function Menu({ toggleMenu, menu }) {
                   </span>
                 </Link>
               </li>
-              <li
-                className={location.pathname === "/statistics" ? "active" : ""}
-              >
+              <li className={location.pathname === "/provider" ? "active" : ""}>
                 <Link className="collapsed" to="/statistics">
                   <span className="menu-bar__text">
                     <span className="crancy-menu-icon crancy-svg-icon__v1">
@@ -273,8 +265,10 @@ function Menu({ toggleMenu, menu }) {
                   </span>
                 </Link>
               </li>
-              <li className={location.pathname === "/teams" ? "active" : ""}>
-                <Link className="collapsed" to="/teams">
+              <li
+                className={location.pathname === "/contracts" ? "active" : ""}
+              >
+                <Link className="collapsed" to="/contracts">
                   <span className="menu-bar__text">
                     <span className="crancy-menu-icon crancy-svg-icon__v1">
                       <svg
