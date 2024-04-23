@@ -1,9 +1,14 @@
 import React from "react";
 import googleLogo from "../../assets/img/google-logo.png";
 import appleLogo from "../../assets/img/apple-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useNavigation } from "react-router-dom";
 
 function LoginForm() {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/dashboard");
+  };
   return (
     <>
       <div className="crancy-wc__heading">
@@ -11,7 +16,7 @@ function LoginForm() {
           Login to your account
         </h3>
       </div>
-      <form className="crancy-wc__form-main">
+      <div className="crancy-wc__form-main">
         {/* <!-- Form Group --> */}
         <div className="form-group">
           <div className="form-group__input">
@@ -63,7 +68,11 @@ function LoginForm() {
         {/* <!-- Form Group --> */}
         <div className="form-group form-mg-top25">
           <div className="crancy-wc__button">
-            <button className="ntfmax-wc__btn" type="submit">
+            <button
+              className="ntfmax-wc__btn"
+              type="submit"
+              onClick={handleLogin}
+            >
               Sign in with email
             </button>
           </div>
@@ -71,19 +80,13 @@ function LoginForm() {
             <span>Or login with</span>
           </div>
           <div className="crancy-wc__button--group">
-            <button
-              className="ntfmax-wc__btn ntfmax-wc__btn--two"
-              type="submit"
-            >
+            <button className="ntfmax-wc__btn ntfmax-wc__btn--two">
               <div className="ntfmax-wc__btn-icon">
                 <img src={googleLogo} alt="" />
               </div>
               Google
             </button>
-            <button
-              className="ntfmax-wc__btn ntfmax-wc__btn--two"
-              type="submit"
-            >
+            <button className="ntfmax-wc__btn ntfmax-wc__btn--two">
               <div className="ntfmax-wc__btn-icon">
                 <img src={appleLogo} alt="" />
               </div>
@@ -100,7 +103,7 @@ function LoginForm() {
             </p>
           </div>
         </div>
-      </form>
+      </div>
     </>
   );
 }
