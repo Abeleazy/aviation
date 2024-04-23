@@ -1,54 +1,69 @@
 import React from "react";
 import usdIcon from "../../assets/img/usd-icon.png";
+import moment from "moment";
 
 function SingleOrder({ order }) {
-  const { id, img, title, date, author, price, paymentMethod, paymentStatus } =
-    order;
+  const {
+    airlineName,
+    airlineEmail,
+    identity,
+    name,
+    takeOFF,
+    destination,
+    amount,
+    status,
+    policyNo,
+    dateCreated,
+    isProcessed,
+    flightStatus,
+  } = order;
   return (
     <tr>
       <td className="crancy-table__column-1 crancy-table__data-1">
         <div className="crancy-table__product--id">
           <p className="crany-table__product--number">
-            <a href="#">{id}</a>
+            <a href="#">{policyNo}</a>
           </p>
         </div>
       </td>
       <td className="crancy-table__column-2 crancy-table__data-2">
         <div className="crancy-table__product">
-          <div className="crancy-table__product-img">
+          {/* <div className="crancy-table__product-img">
             <img src={img} alt="#" />
-          </div>
+          </div> */}
           <div className="crancy-table__product-content">
-            <h4 className="crancy-table__product-title">{title}</h4>
+            <h4 className="crancy-table__product-title">{airlineName}</h4>
           </div>
         </div>
       </td>
       <td className="crancy-table__column-3 crancy-table__data-3">
-        <p className="crancy-table__text crancy-table__time">{date}</p>
+        <p className="crancy-table__text crancy-table__time">
+          {moment(dateCreated).format("MMMM Do YYYY")}
+        </p>
       </td>
       <td className="crancy-table__column-4 crancy-table__data-4">
-        <h5 className="crancy-table__inner--title">{author}</h5>
+        <h5 className="crancy-table__inner--title">{name}</h5>
       </td>
       <td className="crancy-table__column-5 crancy-table__data-5">
         <div className="crancy-table__amount crancy-table__text-two">
           <img src={usdIcon} alt="#" />
-          <span className="crancy-table__text">{price}</span>
+          <span className="crancy-table__text">{takeOFF}</span>
         </div>
       </td>
       <td className="crancy-table__column-6 crancy-table__data-6">
-        <h5 className="crancy-table__inner--title">{paymentMethod}</h5>
+        <h5 className="crancy-table__inner--title">{destination}</h5>
       </td>
       <td className="crancy-table__column-7 crancy-table__data-7">
         <div
           className={`crancy-table__status ${
-            paymentStatus.toLowerCase() === "pending"
+            status.toLowerCase() === "pending"
               ? "crancy-table__status--pending"
-              : paymentStatus.toLowerCase() === "cancel"
+              : status.toLowerCase() === "cancel"
               ? "crancy-table__status--cancel"
               : ""
           }`}
         >
-          {paymentStatus}
+          {status}
         </div>
       </td>
     </tr>

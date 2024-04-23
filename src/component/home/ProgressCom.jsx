@@ -1,17 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProgressCard from "../cards/ProgressCard";
+import axios from "axios";
 
 function ProgressCom() {
+  const [manifest, setManifest] = useState(0);
+  const [newManifest, setNewManifest] = useState(0);
+  const [totalRemittance, setTotalRemittance] = useState(0);
+  const getAllManifest = async () => {
+    const { data } = await axios.get(
+      "https://testaviationmedicals.azurewebsites.net/api/Airline/getallairlinedata"
+    );
+
+    if (data.success) {
+      const newM = data.data.filter((e) => Date(e.dateCreated) === Date.now());
+      setManifest(data.data.length);
+      console.log(newManifest);
+      setNewManifest(newM.length);
+    }
+  };
+
+  const getTotalRemittance = async () => {
+    const { data } = await axios.get(
+      "https://testaviationmedicals.azurewebsites.net/api/Airline/totalamount"
+    );
+
+    if (data.success) {
+      setTotalRemittance(data.data);
+    }
+  };
+
+  useEffect(() => {
+    getAllManifest();
+    getTotalRemittance();
+  }, []);
   return (
     <div className="row">
       <ProgressCard
-        count="$7,245.00"
-        name="Total Sells"
-        totalSale="+ 3.5%"
+        count={manifest.toString()}
+        name="Total Manifest"
+        totalSale={
+          newManifest > 0
+            ? "+ " + newManifest.toString()
+            : newManifest.toString()
+        }
         color="#0A82FD"
         progressSettings={{
-          value: 11.5,
-          maxValue: 100,
+          value: manifest,
+          maxValue: manifest,
           style: {
             strokeLinecap: "round",
             textSize: "18px",
@@ -22,13 +57,13 @@ function ProgressCom() {
         }}
       />
       <ProgressCard
-        count="$7,245.00"
-        name="Total Visit"
-        totalSale="+ 3.5%"
+        count={totalRemittance.toString()}
+        name="Total Remittance"
+        totalSale={totalRemittance.toString()}
         color="#EF5DA8"
         progressSettings={{
-          value: 34.4,
-          maxValue: 100,
+          value: totalRemittance,
+          maxValue: totalRemittance,
           style: {
             trailColor: "#FCDFEE",
           },
@@ -36,12 +71,12 @@ function ProgressCom() {
       />
       <ProgressCard
         count="$10,245.00"
-        name="Total Click"
+        name="Total Customers"
         totalSale="+ 3.5%"
         color="#27AE60"
         progressSettings={{
-          value: 54.2,
-          maxValue: 100,
+          value: totalRemittance,
+          maxValue: totalRemittance,
           style: {
             trailColor: "#D4EFDF",
           },
@@ -49,7 +84,7 @@ function ProgressCom() {
       />
       <ProgressCard
         count="$80,245.00"
-        name="Insprations"
+        name="Total Claims"
         totalSale="+ 3.5%"
         color="#9B51E0"
         progressSettings={{

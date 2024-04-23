@@ -2,9 +2,31 @@ import React from "react";
 import googleLogo from "../../assets/img/google-logo.png";
 import appleLogo from "../../assets/img/apple-logo.png";
 import { Link, useNavigate, useNavigation } from "react-router-dom";
+import { useFormik } from "formik";
+import axios from "axios";
 
 function LoginForm() {
   const navigate = useNavigate();
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: async (values) => {
+      console.log(values);
+      const { data } = await axios.post(
+        "https://testaviationmedicals.azurewebsites.net/api/auth/login",
+        values
+      );
+      if (data.success) {
+        localStorage.setItem("x-access-token", data.data.token.token);
+        navigate("/dashboard");
+      } else {
+        console.log(data);
+      }
+    },
+  });
 
   const handleLogin = () => {
     navigate("/dashboard");
@@ -26,6 +48,7 @@ function LoginForm() {
               name="email"
               placeholder="admin@mail.com"
               required="required"
+              onChange={formik.handleChange("email")}
             />
           </div>
         </div>
@@ -38,8 +61,9 @@ function LoginForm() {
               id="password-field"
               type="password"
               name="password"
-              maxLength="8"
+              // maxLength="8"
               required="required"
+              onChange={formik.handleChange("password")}
             />
             <span className="crancy-wc__toggle">
               <i className="fas fa-eye" id="toggle-icon"></i>
@@ -71,7 +95,7 @@ function LoginForm() {
             <button
               className="ntfmax-wc__btn"
               type="submit"
-              onClick={handleLogin}
+              onClick={formik.handleSubmit}
             >
               Sign in with email
             </button>

@@ -40,6 +40,7 @@ import ChangePassword from "./pages/settings/change-password";
 import SettingsFaq from "./pages/settings/faq";
 import TermsAndCondition from "./pages/settings/terms-and-conditions";
 import SupportTicket from "./pages/support-ticket";
+import Airline from "./pages/airline";
 
 const router = createBrowserRouter([
   {
@@ -146,7 +147,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/airlines",
-        element: <Users />,
+        element: <Airline />,
       },
 
       {

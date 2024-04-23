@@ -1,14 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SelectInput from "../form/SelectInput";
 import SingleOrder from "../cards/SingleOrder";
 import orders from "../../data/orders";
 import calendarIcon from "../../assets/img/calendar-icon.svg";
 import SelectBox from "../form/SelectBox";
 import Pikaday from "../pikaday";
+import axios from "axios";
 
 function ActivitySection({ className }) {
   const [page, setPage] = useState(1);
   const [show, setShow] = useState(4);
+
+  const [manifests, setManifests] = useState([]);
+  const getAllManifests = async () => {
+    const { data } = await axios.get(
+      "https://testaviationmedicals.azurewebsites.net/api/Airline/getallairlinedata"
+    );
+
+    if (data.success) {
+      // const newM = data.data.filter((e) => Date(e.dateCreated) === Date.now());
+      setManifests(data.data);
+      console.log(data.data);
+    }
+  };
+
+  useEffect(() => {
+    getAllManifests();
+  }, []);
   return (
     <div className={`${className ? className : "crancy-table"} mg-top-30`}>
       <div className="crancy-table__heading">
@@ -99,10 +117,10 @@ function ActivitySection({ className }) {
             <thead className="crancy-table__head">
               <tr>
                 <th className="crancy-table__column-1 crancy-table__h1">
-                  Order Id
+                  Policy No
                 </th>
                 <th className="crancy-table__column-2 crancy-table__h2">
-                  Prodcuts
+                  Airline
                 </th>
                 <th className="crancy-table__column-3 crancy-table__h3">
                   Date
@@ -111,10 +129,10 @@ function ActivitySection({ className }) {
                   Customer
                 </th>
                 <th className="crancy-table__column-5 crancy-table__h5">
-                  Amount
+                  Take Off
                 </th>
                 <th className="crancy-table__column-6 crancy-table__h6">
-                  Payment by
+                  Destination
                 </th>
                 <th className="crancy-table__column-7 crancy-table__h7">
                   Status
@@ -123,7 +141,7 @@ function ActivitySection({ className }) {
             </thead>
             {/* <!-- crancy Table Body --> */}
             <tbody className="crancy-table__body">
-              {orders?.map((order, index) => {
+              {manifests?.map((manifest, index) => {
                 const current = page * show;
                 const previous = current - show;
                 if (
@@ -131,11 +149,11 @@ function ActivitySection({ className }) {
                   index + 1 > previous &&
                   index + 1 <= current
                 ) {
-                  return <SingleOrder order={order} key={order.id} />;
+                  return <SingleOrder order={manifest} key={manifest.id} />;
                 } else if (page == 1) {
                   return (
                     index < page * show && (
-                      <SingleOrder order={order} key={order.id} />
+                      <SingleOrder order={manifest} key={manifest.id} />
                     )
                   );
                 }
