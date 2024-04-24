@@ -2,16 +2,26 @@ import React from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-function ProgressCard({ count, totalSale, progressSettings, name, color }) {
+function ProgressCard({
+  count,
+  totalSale,
+  progressSettings,
+  name,
+  color,
+  isCurrecy,
+}) {
   return (
     <div className="col-xl-3 col-lg-6 col-md-6 col-12 mg-top-30">
       <div className="crancy-progress-card">
         <div className="crancy-progress-card__content">
           <h4 className="crancy-progress-card__title">
-            <b className="count-animate">{count}</b>
+            <b className="count-animate">
+              {isCurrecy && <span>&#8358;</span>}
+              {count}
+            </b>
           </h4>
           <div className="crancy-progress-card__history">
-            <span className="crancy-progress-card__percent" style={{ color }}>
+            {/* <span className="crancy-progress-card__percent" style={{ color }}>
               <svg
                 //   className="crancy-color1__fill"
                 width="20"
@@ -27,11 +37,11 @@ function ProgressCard({ count, totalSale, progressSettings, name, color }) {
                 />
               </svg>
               {totalSale}
-            </span>
+            </span> */}
             <span>{name}</span>
           </div>
         </div>
-        <div style={{ width: 70, height: 70 }}>
+        {/* <div style={{ width: 70, height: 70 }}>
           <CircularProgressbar
             value={progressSettings.value}
             maxValue={progressSettings.maxValue}
@@ -50,7 +60,7 @@ function ProgressCard({ count, totalSale, progressSettings, name, color }) {
               rotation: 0.7,
             })}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -370,7 +370,7 @@ Version:	1.0.0
   gap: 30px;
 }
 .crancy-header__form-inner {
-  width: 400px;
+  width: 100%;
   position: relative;
 }
 .crancy-header__form-inner input {
@@ -1496,7 +1496,7 @@ Version:	1.0.0
 }
 .crancy-sidebar__creator-name {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   color: #2f3032;
   line-height: 18px;
   font-weight: 500;
@@ -9230,10 +9230,10 @@ select,
   display: none;
 }
 .crancy-user-search__single {
-  width: 24%;
+  width: 100%;
 }
 .crancy-user-search__single.crancy-user-search__single--sform {
-  width: 40%;
+  width: 100%;
 }
 .crancy-header__form--user .crancy-header__form-inner {
   width: auto;

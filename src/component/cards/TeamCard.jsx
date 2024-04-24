@@ -4,21 +4,36 @@ import totalProjectImg from "../../assets/img/total-project.png";
 import totalTaskImg from "../../assets/img/total-task.png";
 
 function TeamCard({ profile }) {
-  const { img, coverImg, name, address, totalProjects, totalTasks } = profile;
+  const {
+    id,
+    identity,
+    firstName,
+    lastName,
+    email,
+    address,
+    phoneNumber,
+    password,
+    accounNo,
+    bankName,
+    bankCode,
+    percentageShare,
+  } = profile;
   return (
     <div className="col-xxl-3 col-lg-4 col-md-6 col-12">
       {/* <!-- crancy User Profile --> */}
       <div className="crancy-userprofile mg-top-40">
         <div className="crancy-userprofile__header">
-          <img src={coverImg} alt="#" />
+          <img src="" alt="#" />
         </div>
         <div className="crancy-userprofile__user">
           <div className="crancy-userprofile__content">
             <div className="crancy-userprofile__thumb">
-              <img src={img} alt="#" />
+              <img src="" alt="#" />
             </div>
             <div className="crancy-userprofile__info">
-              <h4 className="crancy-userprofile__info-title">{name}</h4>
+              <h4 className="crancy-userprofile__info-title">
+                {firstName + " " + lastName}
+              </h4>
               <div className="crancy-userprofile__location">
                 <svg
                   className="crancy-color1__fill"
@@ -33,7 +48,7 @@ function TeamCard({ profile }) {
                 <p className="crancy-userprofile__info-text">{address}</p>
               </div>
               <div className="crancy-achievement">
-                <div className="crancy-achievement__single">
+                {/* <div className="crancy-achievement__single">
                   <img src={totalProjectImg} alt="" />
                   <div className="crancy-achievement__content">
                     <h4 className="crancy-achievement__title">
@@ -41,18 +56,21 @@ function TeamCard({ profile }) {
                       <span>Total Projects</span>
                     </h4>
                   </div>
-                </div>
+                </div> */}
                 <div className="crancy-achievement__single">
                   <img src={totalTaskImg} alt="" />
                   <div className="crancy-achievement__content">
                     <h4 className="crancy-achievement__title">
-                      {totalTasks}
+                      {percentageShare}
                       <span>Total Tasks</span>
                     </h4>
                   </div>
                 </div>
               </div>
-              <Link className="crancy-achievement__btn" to="/profile-overview">
+              <Link
+                className="crancy-achievement__btn"
+                to={`/profile-overview/${identity}`}
+              >
                 <svg
                   width="15"
                   height="18"

@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SelectInput from "../form/SelectInput";
 import afghanistan from "../../assets/img/country-1.png";
 import saudiArabia from "../../assets/img/country-5.png";
 import bangladesh from "../../assets/img/country-2.png";
 import unitedStates from "../../assets/img/country-4.png";
+import axios from "axios";
 
 function Countries() {
+  const [airlines, setAirline] = useState([]);
+
+  const getAllAirlines = async () => {
+    const { data } = await axios.get(
+      "https://testaviationmedicals.azurewebsites.net/api/Airline/totalamount-grouped-by-airline"
+    );
+
+    if (data.success) {
+      setAirline(data.data);
+    }
+  };
+
+  useEffect(() => {
+    getAllAirlines();
+  }, []);
   return (
     <div className="col-xl-12 col-lg-6 col-md-6 col-12 crancy-sidebar__widget">
       <div className="crancy-sidebar__single">
@@ -34,18 +50,23 @@ function Countries() {
               aria-labelledby="nav-home-tab"
             >
               <ul className="crancy-sidebar__creatorlist">
-                <li>
-                  <div className="crancy-sidebar__creator">
-                    <img src={afghanistan} alt="#" />
-                    <a href="#">
-                      <span className="crancy-sidebar__creator-link">
-                        Afghanistan
-                      </span>
-                      <b className="crancy-sidebar__creator-name">$7.34k</b>
-                    </a>
-                  </div>
-                </li>
-                <li>
+                {airlines?.map((airline) => (
+                  <li>
+                    <div className="crancy-sidebar__creator">
+                      <img src={afghanistan} alt="#" />
+                      <a href="#">
+                        <span className="crancy-sidebar__creator-link">
+                          {airline.airlineName}
+                        </span>
+                        <b className="crancy-sidebar__creator-name">
+                          <span>&#8358;</span>
+                          <span>{airline.totalAmount.toString()}</span>
+                        </b>
+                      </a>
+                    </div>
+                  </li>
+                ))}
+                {/* <li>
                   <div className="crancy-sidebar__creator">
                     <img src={saudiArabia} alt="#" />
                     <a href="#">
@@ -88,7 +109,7 @@ function Countries() {
                       <b className="crancy-sidebar__creator-name">$8.34k</b>
                     </a>
                   </div>
-                </li>
+                </li> */}
               </ul>
             </div>
             {/* <!-- Single Tab --> */}

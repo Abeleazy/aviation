@@ -8,7 +8,7 @@ function SearchBar() {
     <div className="crancy-user-search mg-top-40">
       {/* <!-- Single Search --> */}
       <div className="crancy-user-search__single crancy-user-search__single--sform">
-        <div className="crancy-header__form crancy-header__form--user ">
+        <div className="crancy-header__form crancy-header__form--user">
           <form className="crancy-header__form-inner" action="#">
             <button className="search-btn" type="submit">
               <svg
@@ -36,17 +36,13 @@ function SearchBar() {
                 />
               </svg>
             </button>
-            <input
-              name="s"
-              type="text"
-              placeholder="Job Title, Company, or Keywords"
-            />
+            <input name="s" type="text" placeholder="Airline" />
           </form>
         </div>
       </div>
       {/* <!-- End Single Search --> */}
       {/* <!-- Single Search --> */}
-      <div className="crancy-user-search__single crancy-user-search__single--location">
+      {/* <div className="crancy-user-search__single crancy-user-search__single--location">
         <img src={locationIcon} />
 
         <SelectBox
@@ -54,10 +50,10 @@ function SearchBar() {
           img={<i className="fa-solid fa-chevron-down"></i>}
           className="searchBarSelect"
         />
-      </div>
+      </div> */}
       {/* <!-- End Single Search --> */}
       {/* <!-- Single Search --> */}
-      <div className="crancy-user-search__single crancy-user-search__single--button">
+      {/* <div className="crancy-user-search__single crancy-user-search__single--button">
         <div className="crancy-user-search__group">
           <div className="crancy-user-search__filter">
             <a href="#">
@@ -68,7 +64,7 @@ function SearchBar() {
             Search
           </a>
         </div>
-      </div>
+      </div> */}
       {/* <!-- End Single Search --> */}
     </div>
   );

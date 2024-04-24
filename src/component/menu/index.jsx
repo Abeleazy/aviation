@@ -10,12 +10,17 @@ import inboxAuthor from "../../assets/img/inbox-author.png";
 import signInIcon from "../../assets/img/support-sign-icon.svg";
 import Dropdown from "./Dropdown";
 import bg from "../../assets/img/support-bg.png";
+import { toast } from "react-toastify";
 
 function Menu({ toggleMenu, menu }) {
   const [dropdown, setDropdown] = useState(false);
   const location = useLocation();
   const handleDropdown = (name) => {
     setDropdown(name === dropdown ? "" : name);
+  };
+
+  const handleComingSoon = () => {
+    toast("Coming soon!");
   };
   return (
     <div className={`crancy-smenu ${menu && "crancy-close"}`} id="CrancyMenu">
@@ -182,7 +187,11 @@ function Menu({ toggleMenu, menu }) {
               <li
                 className={location.pathname === "/customers" ? "active" : ""}
               >
-                <Link className="collapsed" to="/customers">
+                <Link
+                  className="collapsed"
+                  to="/dashboard"
+                  onClick={handleComingSoon}
+                >
                   <span className="menu-bar__text">
                     <span className="crancy-menu-icon crancy-svg-icon__v1">
                       <svg
@@ -210,7 +219,11 @@ function Menu({ toggleMenu, menu }) {
                 </Link>
               </li>
               <li className={location.pathname === "/claims" ? "active" : ""}>
-                <Link className="collapsed" to="/claims">
+                <Link
+                  className="collapsed"
+                  to="/dashboard"
+                  onClick={handleComingSoon}
+                >
                   <span className="menu-bar__text">
                     <span className="crancy-menu-icon crancy-svg-icon__v1">
                       <svg
@@ -238,7 +251,13 @@ function Menu({ toggleMenu, menu }) {
                 </Link>
               </li>
               <li className={location.pathname === "/provider" ? "active" : ""}>
-                <Link className="collapsed" to="/statistics">
+                <Link
+                  className="collapsed pe-auto"
+                  to="/dashboard"
+                  onClick={handleComingSoon}
+                >
+                  {/* <button className="collapsed"></button> */}
+                  {/* <div className="collapsed"> */}
                   <span className="menu-bar__text">
                     <span className="crancy-menu-icon crancy-svg-icon__v1">
                       <svg
@@ -263,6 +282,7 @@ function Menu({ toggleMenu, menu }) {
                     </span>
                     <span className="menu-bar__name">Provider</span>
                   </span>
+                  {/* </div> */}
                 </Link>
               </li>
               <li

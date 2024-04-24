@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SelectInput from "../../../component/form/SelectInput";
 import DoughnutChart from "../../../component/chart/Doughnut";
 import { projects } from "../../../data/projects";
 import TaskCard from "../../../component/cards/TaskCard";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const data = {
   labels: ["Total Task", "Completed Task"],
@@ -33,6 +35,24 @@ const options = {
 };
 
 function Overview() {
+  const [contract, setContract] = useState({});
+  const { id } = useParams();
+
+  const getContract = async () => {
+    console.log(id);
+    const { data } = await axios.get(
+      `https://testaviationmedicals.azurewebsites.net/api/Shareholder/get-benefiary-by-shareholdeId?ShareholderId=${id}`
+    );
+
+    if (data.success) {
+      console.log(data.data);
+      setContract(data.data);
+    }
+  };
+
+  useEffect(() => {
+    getContract();
+  }, {});
   return (
     <div className="tab-pane fade show active">
       <div className="crancy-upcontent__text">

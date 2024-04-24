@@ -155,7 +155,7 @@ const router = createBrowserRouter([
         element: <History />,
       },
       {
-        path: "/profile-overview",
+        path: "/profile-overview/:id",
         Component: ProfileOverview,
         children: [
           {

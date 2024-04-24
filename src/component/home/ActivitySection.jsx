@@ -48,10 +48,10 @@ function ActivitySection({ className }) {
               <div className="col-lg-3 col-md-6 col-12">
                 {/* <!-- Single Filter --> */}
                 <div className="crancy-table-filter__single crancy-table-filter__location">
-                  <label htmlFor="crancy-table-filter__label">Location</label>
+                  <label htmlFor="crancy-table-filter__label">Airline</label>
                   <SelectBox
                     datas={[
-                      "State or Province",
+                      "Airline",
                       "New York",
                       "Sydney",
                       "Dhaka",
@@ -66,9 +66,7 @@ function ActivitySection({ className }) {
                 {/* <!-- Single Filter --> */}
 
                 <div className="crancy-table-filter__single crancy-table-filter__amount">
-                  <label htmlFor="crancy-table-filter__label">
-                    Amount Spent
-                  </label>
+                  <label htmlFor="crancy-table-filter__label">Amount</label>
                   <SelectBox
                     datas={["$2,000", "$4,000", "$3,000", "$4,000", "$5,000"]}
                     img={<i className="fa-solid fa-chevron-down"></i>}
@@ -80,7 +78,7 @@ function ActivitySection({ className }) {
                 {/* <!-- Single Filter --> */}
                 <div className="crancy-table-filter__single crancy-table-filter__trans-date">
                   <label htmlFor="crancy-table-filter__label">
-                    Transaction list Date
+                    Transaction Date
                   </label>
                   <div className="crancy-table-filter__group">
                     <Pikaday />
@@ -95,7 +93,7 @@ function ActivitySection({ className }) {
                 {/* <!-- Single Filter --> */}
                 <div className="crancy-table-filter__single crancy-table-filter__trans">
                   <label htmlFor="crancy-table-filter__label">
-                    Type of transaction
+                    Transaction Type
                   </label>
                   <SelectBox
                     datas={["All transaction", "Paypal", "Stripe", "Payoneer"]}

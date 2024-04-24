@@ -38,6 +38,7 @@ function ProgressCom() {
       <ProgressCard
         count={manifest.toString()}
         name="Total Manifest"
+        isCurrecy={false}
         totalSale={
           newManifest > 0
             ? "+ " + newManifest.toString()
@@ -58,6 +59,7 @@ function ProgressCom() {
       />
       <ProgressCard
         count={totalRemittance.toString()}
+        isCurrecy={true}
         name="Total Remittance"
         totalSale={totalRemittance.toString()}
         color="#EF5DA8"
@@ -70,8 +72,9 @@ function ProgressCom() {
         }}
       />
       <ProgressCard
-        count="$10,245.00"
+        count="0"
         name="Total Customers"
+        isCurrecy={false}
         totalSale="+ 3.5%"
         color="#27AE60"
         progressSettings={{
@@ -83,8 +86,9 @@ function ProgressCom() {
         }}
       />
       <ProgressCard
-        count="$80,245.00"
+        count="0"
         name="Total Claims"
+        isCurrecy={false}
         totalSale="+ 3.5%"
         color="#9B51E0"
         progressSettings={{

@@ -4,19 +4,9 @@ import AirlineCard from "../cards/AirlineCard";
 import Pagination from "../teams/Pagination";
 import axios from "axios";
 
-function AirlineCom() {
-  const [airlines, setAirlines] = useState([]);
-  const getAirlines = async () => {
-    const { data } = await axios.get(
-      "https://testaviationmedicals.azurewebsites.net/api/airline/get-airline"
-    );
-    if (data.success) {
-      setAirlines(data.data);
-    }
-  };
-  useEffect(() => {
-    getAirlines();
-  }, []);
+function AirlineCom({ airlines }) {
+  // const [airlines, setAirlines] = useState([]);
+
   return (
     <div className="row">
       {airlines?.map((airline) => (
