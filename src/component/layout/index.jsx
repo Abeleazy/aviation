@@ -2,12 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Menu from "../menu";
 import Header from "../header";
+import { useStore } from "../../utils/store/useStore";
+import axios from "axios";
+import AddBeneficiaryModal from "./AddBeneficiaryModal";
+import AddContractModal from "./AddContractModal";
 
 function Layout({ children }) {
   const [menu, setMenu] = useState(false);
+  const { openBeneficiary, openContract } = useStore();
   const toggleMenu = () => {
     setMenu(!menu);
   };
+
   useEffect(() => {
     if (menu) {
       document
@@ -21,12 +27,14 @@ function Layout({ children }) {
   }, [menu]);
 
   return (
-    <div id="crancy-dark-light">
-      <div className="crancy-body-area ">
+    <div id="crancy-dark-light" className="relative">
+      <div className="crancy-body-area">
         <Menu toggleMenu={toggleMenu} menu={menu} />
         <Header toggleMenu={toggleMenu} menu={menu} />
         <Outlet />
       </div>
+      {openBeneficiary && <AddBeneficiaryModal />}
+      {openContract && <AddContractModal />}
     </div>
   );
 }

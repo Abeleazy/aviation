@@ -9,9 +9,13 @@ import { teams } from "../../data/teams";
 import Pagination from "../../component/teams/Pagination";
 import useMenu from "../../hooks/useMenu";
 import axios from "axios";
+import AddNewContract from "../../component/form/AddNewContract";
+import { useStore } from "../../utils/store/useStore";
 
 function Teams() {
   const [contracts, setContracts] = useState([]);
+
+  const { openContract } = useStore();
   useMenu();
   const getContracts = async () => {
     const { data } = await axios.get(
@@ -26,13 +30,13 @@ function Teams() {
 
   useEffect(() => {
     getContracts();
-  }, []);
+  }, [openContract === true]);
   return (
     <Layout>
       <BreadCrumb title="Shareholders" link="/contracts" />
       <Wrapper>
         <h3 className="crancy-teams__title mg-btm-20">Our Team</h3>
-        <AddNewMember />
+        <AddNewContract />
         <BodyWrapper>
           {contracts?.map((profile) => (
             <TeamCard profile={profile} key={profile.id} />

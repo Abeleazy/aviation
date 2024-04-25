@@ -1,11 +1,11 @@
 import React from "react";
 import { useStore } from "../../utils/store/useStore";
 
-function AddNewBeneficiary() {
-  const { addBeneficiaryModal, openBeneficiary } = useStore();
+function AddNewContract() {
+  const { openContract, addContractModal } = useStore();
+
   const handleOpenModal = () => {
-    console.log(openBeneficiary);
-    addBeneficiaryModal(!openBeneficiary);
+    addContractModal(!openContract);
   };
   return (
     <div className="row">
@@ -30,7 +30,11 @@ function AddNewBeneficiary() {
                 <path d="M15.6888 18.2542C10.5721 22.0645 4.46185 20.044 1.80873 16.2993C-0.984169 12.3585 -0.508523 7.01726 2.99926 3.64497C6.41228 0.362739 11.833 0.112279 15.5865 3.01273C19.3683 5.93475 20.8252 11.8651 17.3212 16.5826C17.431 16.6998 17.5417 16.8246 17.6599 16.9437C19.6263 18.9117 21.5973 20.8751 23.56 22.8468C24.3105 23.601 24.0666 24.7033 23.104 24.9575C22.573 25.0972 22.1724 24.8646 21.8075 24.4988C19.9218 22.6048 18.0276 20.7194 16.1429 18.8245C15.9674 18.65 15.8314 18.4361 15.6888 18.2542ZM2.39508 10.6363C2.38758 14.6352 5.61109 17.8742 9.62079 17.8977C13.6502 17.9212 16.9018 14.6914 16.9093 10.6597C16.9169 6.64673 13.7046 3.41609 9.69115 3.39921C5.66457 3.38232 2.40259 6.61672 2.39508 10.6363Z"></path>
               </svg>
             </button>
-            <input name="s" type="text" placeholder="Search beneficary" />
+            <input
+              name="s"
+              type="text"
+              placeholder="Search for shareholder..."
+            />
           </form>
         </div>
       </div>
@@ -39,8 +43,6 @@ function AddNewBeneficiary() {
           <div className="crancy-team-meta__single">
             <button
               className="crancy-btn crancy-gbcolor"
-              data-toggle="modal"
-              data-target="#exampleModalLong"
               onClick={handleOpenModal}
             >
               <svg
@@ -55,48 +57,8 @@ function AddNewBeneficiary() {
                   fill="white"
                 />
               </svg>
-              Add Beneficiary
+              Add Shareholder
             </button>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
-                Modal title
-              </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">...</div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -104,4 +66,4 @@ function AddNewBeneficiary() {
   );
 }
 
-export default AddNewBeneficiary;
+export default AddNewContract;

@@ -23,7 +23,10 @@ function Menu({ toggleMenu, menu }) {
     toast("Coming soon!");
   };
   return (
-    <div className={`crancy-smenu ${menu && "crancy-close"}`} id="CrancyMenu">
+    <div
+      className={`crancy-smenu z-[6000] ${menu && "crancy-close"}`}
+      id="CrancyMenu"
+    >
       {/* <!-- Admin Menu --> */}
       <div className={`admin-menu ${dropdown ? "no-overflow" : ""}`}>
         {/* <!-- Logo --> */}

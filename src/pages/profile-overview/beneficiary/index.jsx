@@ -10,11 +10,13 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import BeneficiaryCard from "../../../component/cards/BeneficiaryCard";
 import AddNewBeneficiary from "../../../component/form/AddNewBeneficiary";
+import { useStore } from "../../../utils/store/useStore";
 
 function Beneficiary() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const { id } = useParams();
   const [benefiaries, setBeneficiaries] = useState([]);
+  const { openBeneficiary } = useStore();
   useMenu();
   const getBeneficiaries = async () => {
     const { data } = await axios.get(
@@ -29,7 +31,7 @@ function Beneficiary() {
 
   useEffect(() => {
     getBeneficiaries();
-  }, []);
+  }, [openBeneficiary === true]);
   return (
     <>
       {/* <Layout> */}
