@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import googleLogo from "../../assets/img/google-logo.png";
 import appleLogo from "../../assets/img/apple-logo.png";
 import { Link, useNavigate, useNavigation } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
+import { toast } from "react-toastify";
+import Loader from "../loader/index";
 
 function LoginForm() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -14,6 +19,7 @@ function LoginForm() {
       password: "",
     },
     onSubmit: async (values) => {
+      setIsLoading(true);
       console.log(values);
       const { data } = await axios.post(
         "https://testaviationmedicals.azurewebsites.net/api/auth/login",
@@ -21,8 +27,11 @@ function LoginForm() {
       );
       if (data.success) {
         localStorage.setItem("x-access-token", data.data.token.token);
+        setIsLoading(false);
         navigate("/dashboard");
       } else {
+        toast(data.message);
+        setIsLoading(false);
         console.log(data);
       }
     },
@@ -95,38 +104,14 @@ function LoginForm() {
             <button
               className="ntfmax-wc__btn"
               type="submit"
+              disabled={isLoading}
               onClick={formik.handleSubmit}
             >
-              Sign in with email
-            </button>
-          </div>
-          <div className="crancy-wc__form-login--label">
-            <span>Or login with</span>
-          </div>
-          <div className="crancy-wc__button--group">
-            <button className="ntfmax-wc__btn ntfmax-wc__btn--two">
-              <div className="ntfmax-wc__btn-icon">
-                <img src={googleLogo} alt="" />
-              </div>
-              Google
-            </button>
-            <button className="ntfmax-wc__btn ntfmax-wc__btn--two">
-              <div className="ntfmax-wc__btn-icon">
-                <img src={appleLogo} alt="" />
-              </div>
-              Apple
+              {isLoading ? "Loading..." : "Sign in"}
             </button>
           </div>
         </div>
         {/* <!-- Form Group --> */}
-        <div className="form-group form-mg-top30">
-          <div className="crancy-wc__bottom">
-            <p className="crancy-wc__text">
-              Dont’t have an account ?{" "}
-              <Link to="/create-account">Get Started</Link>
-            </p>
-          </div>
-        </div>
       </div>
     </>
   );

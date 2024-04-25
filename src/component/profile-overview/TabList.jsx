@@ -19,38 +19,38 @@ function TabList() {
         >
           Overview
         </Link>
-        <Link
+        {/* <Link
           className={`list-group-item ${
             lastPath === "activities" ? "active" : ""
           }`}
           to="activities"
         >
           Activities
-        </Link>
+        </Link> */}
         <Link
           className={`list-group-item ${
-            lastPath === "projects" ? "active" : ""
+            lastPath === "beneficiaries" ? "active" : ""
           }`}
-          to="projects"
+          to="beneficiaries"
         >
-          Projects
+          Beneficiaries
         </Link>
-        <Link
+        {/* <Link
           className={`list-group-item ${
             lastPath === "documents" ? "active" : ""
           }`}
           to="documents"
         >
           Documents
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           className={`list-group-item ${
             lastPath === "gallery" ? "active" : ""
           }`}
           to="gallery"
         >
           Gallery
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

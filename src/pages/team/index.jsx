@@ -29,7 +29,7 @@ function Teams() {
   }, []);
   return (
     <Layout>
-      <BreadCrumb title="Profile" link="/teams" />
+      <BreadCrumb title="Shareholders" link="/contracts" />
       <Wrapper>
         <h3 className="crancy-teams__title mg-btm-20">Our Team</h3>
         <AddNewMember />

@@ -13,7 +13,7 @@ function Projects() {
     >
       {/* <!-- Task Area --> */}
       <div className="crancy-taskarea mg-top-30">
-        <h3 className="crancy-taskarea__title m-0">Task Progress</h3>
+        <h3 className="crancy-taskarea__title m-0">Beneficiaries</h3>
         <div className="row">
           {projects?.map((task) => (
             <TaskCard task={task} key={task.id} />

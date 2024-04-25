@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/img/logo.png";
 import logoWhite from "../../assets/img/logo-white.png";
-import logoIcon from "../../assets/img/logo-icon.png";
+import logoIcon from "../../assets/img/aviation-logo.png";
 import arrowIcon from "../../assets/img/arrow-icon.svg";
 import { Link } from "react-router-dom";
 import SearchForm from "../form/SearchForm";
@@ -55,7 +55,7 @@ function Header({ toggleMenu, menu }) {
                         <img className="crancy-logo__main" src={logo} alt="#" />
                         <img
                           className="crancy-logo__main--dark"
-                          src={logoWhite}
+                          src={logoIcon}
                           alt="#"
                         />
                         {/* <!-- Logo for Dark Version --> */}
@@ -66,7 +66,7 @@ function Header({ toggleMenu, menu }) {
                         />
                         <img
                           className="crancy-logo__main--small--dark"
-                          src={logoWhite}
+                          src={logoIcon}
                           alt="#"
                         />
                       </a>
@@ -86,7 +86,7 @@ function Header({ toggleMenu, menu }) {
                   <div className="crancy-header__group">
                     <div className="crancy-header__group-two">
                       <div className="crancy-header__right">
-                        <Language
+                        {/* <Language
                           subNav={subNav}
                           setSubNav={setSubNav}
                           title="language"
@@ -95,9 +95,9 @@ function Header({ toggleMenu, menu }) {
                           subNav={subNav}
                           setSubNav={setSubNav}
                           title="currency"
-                        />
+                        /> */}
                         {/* <!-- Header Zoom --> */}
-                        <FullScreenBtn />
+                        {/* <FullScreenBtn /> */}
                         <div className="crancy-header__options">
                           <Alarm
                             subMenu={subNav}

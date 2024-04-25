@@ -3,12 +3,12 @@ import toggleIcon from "../../assets/img/toggle-icon.svg";
 import { Link } from "react-router-dom";
 
 function AirlineCard({ airline }) {
-  const { idenity, name, email, phoneNumber, adress, roleId } = airline;
+  const { id, idenity, name, email, phoneNumber, adress, roleId } = airline;
   return (
     <div className="col-xxl-3 col-lg-4 col-md-6 col-12">
       <div className="crancy-single-user mg-top-30">
         <div className="crancy-toggle">
-          <Link to="#">
+          <Link to={`/airlines/${idenity}`}>
             <img src={toggleIcon} alt="" />
           </Link>
         </div>

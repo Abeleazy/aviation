@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from "react";
-import SelectInput from "../../../component/form/SelectInput";
 import DoughnutChart from "../../../component/chart/Doughnut";
-import { projects } from "../../../data/projects";
-import TaskCard from "../../../component/cards/TaskCard";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const data = {
-  labels: ["Total Task", "Completed Task"],
-  datasets: [
-    {
-      label: "My First Dataset",
-      data: [22, 78],
-      backgroundColor: ["#E4F2FF", "#F2C94C"],
-      hoverOffset: 2,
-      borderWidth: 0,
-    },
-  ],
-};
+// const data = {
+//   labels: ["Total Shares", "Owned shares"],
+//   datasets: [
+//     {
+//       label: "My First Dataset",
+//       data: [22, 78],
+//       backgroundColor: ["#E4F2FF", "#F2C94C"],
+//       hoverOffset: 2,
+//       borderWidth: 0,
+//     },
+//   ],
+// };
 
 const options = {
   responsive: true,
@@ -29,7 +26,7 @@ const options = {
     },
     title: {
       display: false,
-      text: "Sell History",
+      text: "Share Percentage",
     },
   },
 };
@@ -37,11 +34,25 @@ const options = {
 function Overview() {
   const [contract, setContract] = useState({});
   const { id } = useParams();
+  const data = {
+    labels: ["Total Shares", "Owned shares"],
+    datasets: [
+      {
+        label: "My First Dataset",
+        data: contract
+          ? [100 - contract.percentageShare, contract.percentageShare]
+          : [100, 0],
+        backgroundColor: ["#E4F2FF", "#F2C94C"],
+        hoverOffset: 2,
+        borderWidth: 0,
+      },
+    ],
+  };
 
   const getContract = async () => {
     console.log(id);
     const { data } = await axios.get(
-      `https://testaviationmedicals.azurewebsites.net/api/Shareholder/get-benefiary-by-shareholdeId?ShareholderId=${id}`
+      `https://testaviationmedicals.azurewebsites.net/api/Shareholder/get-shareholder-by-identity?ShareholderId=${id}`
     );
 
     if (data.success) {
@@ -56,51 +67,54 @@ function Overview() {
   return (
     <div className="tab-pane fade show active">
       <div className="crancy-upcontent__text">
-        <p>
+        {/* <p>
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC, making
           it over 2000 years old. Richard McClintock, a Latin professor at
           Hampden-Sydney College in Virginia Ladkrabang. which is doing a
           graduation project aboutdesign thinking. I'd like to know about your
           design template
-        </p>
+        </p> */}
       </div>
 
       <div className="row">
         <div className="col-xxl-4 col-lg-6 col-12">
           <div className="crancy-uactivity crancy-uactivity--v2 mg-top-30">
             <div className="crancy-flex-between mg-btm-20">
-              <h3 className="crancy-uactivity__heading m-0">Task Progress</h3>
-              <SelectInput
+              <h3 className="crancy-uactivity__heading m-0">
+                Share Percentage
+              </h3>
+              {/* <SelectInput
                 options={["Last 7 Days", "Last 15 Days", "Last 30 Days"]}
-              />
+              /> */}
             </div>
             <div className="crancy-task__chart crancy-chart__inside crancy-chart_ptask">
               <DoughnutChart options={options} data={data} />
               <div className="myChart-progress">
                 <h4 className="myChart-progress__number">
-                  78<span>%</span>
+                  {contract.percentageShare}
+                  <span>%</span>
                 </h4>
-                <p className="myChart-progress__text">Task Completed</p>
+                <p className="myChart-progress__text">Share Owned</p>
               </div>
             </div>
             <ul className="crancy-progress-list crancy-progress-list__initial mg-top-20">
               <li>
                 <span className="crancy-progress-list__color crancy-color9__bg"></span>
                 <p>
-                  <span>Complated Task</span> <b>:</b> 18
+                  <span>Owned Shares</span> <b>:</b> {contract.percentageShare}
                 </p>
               </li>
               <li>
                 <span className="crancy-progress-list__color crancy-offwhite__bg"></span>
                 <p>
-                  <span>Total Task</span> <b>:</b> 243
+                  <span>Total Shares</span> <b>:</b> 100
                 </p>
               </li>
             </ul>
           </div>
         </div>
-        <div className="col-xxl-4 col-lg-6 col-12">
+        {/* <div className="col-xxl-4 col-lg-6 col-12">
           <div className="crancy-uactivity  crancy-uactivity--v2 mg-top-30">
             <h3 className="crancy-uactivity__heading">User Activities</h3>
             <ul className="crancy-uactivity__list">
@@ -260,11 +274,11 @@ function Overview() {
               </li>
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* <!-- Task Area --> */}
-      <div className="crancy-taskarea mg-top-30">
+      {/* <div className="crancy-taskarea mg-top-30">
         <h3 className="crancy-taskarea__title m-0">Task Progress</h3>
         <div className="row">
           {projects?.map(
@@ -272,7 +286,7 @@ function Overview() {
               index < 4 && <TaskCard task={task} key={index + "key"} />
           )}
         </div>
-      </div>
+      </div> */}
       {/* <!-- End Task Area --> */}
     </div>
   );

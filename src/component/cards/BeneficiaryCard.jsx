@@ -5,23 +5,21 @@ import totalTaskImg from "../../assets/img/total-task.png";
 import coverImage from "../../assets/img/cover_03.jpg";
 import img from "../../assets/img/follower.png";
 
-function TeamCard({ profile }) {
+function BeneficiaryCard({ profile }) {
   const {
     id,
-    identity,
-    firstName,
-    lastName,
     email,
-    address,
-    phoneNumber,
-    password,
-    accounNo,
+    shareHolderIdenity,
+    beneficiaryName,
+    beneficiaryId,
+    beneficiaryAccount,
     bankName,
     bankCode,
+    phoneNumber,
     percentageShare,
   } = profile;
   return (
-    <div className="col-xxl-3 col-lg-4 col-md-6 col-12">
+    <div className="col-xxl-4 col-lg-6 col-md-6 col-12">
       {/* <!-- crancy User Profile --> */}
       <div className="crancy-userprofile mg-top-40">
         <div className="crancy-userprofile__header">
@@ -34,7 +32,7 @@ function TeamCard({ profile }) {
             </div>
             <div className="crancy-userprofile__info">
               <h4 className="crancy-userprofile__info-title">
-                {firstName + " " + lastName}
+                {beneficiaryName}
               </h4>
               <div className="crancy-userprofile__location">
                 <svg
@@ -47,7 +45,7 @@ function TeamCard({ profile }) {
                 >
                   <path d="M7.004 0C10.5285 0 13.537 2.68429 13.9466 6.15748C14.1748 8.09221 13.6486 9.85722 12.8068 11.5479C11.4884 14.2009 9.60001 16.4241 7.46388 18.4448C7.16579 18.7267 6.87135 18.7442 6.5893 18.4732C3.98891 15.9878 1.69389 13.2787 0.497187 9.81133C-0.304503 7.48688 -0.18206 5.23091 1.19758 3.12864C1.83067 2.1675 2.6926 1.3785 3.70603 0.832444C4.71946 0.286383 5.85268 0.000345594 7.004 0ZM6.98797 10.8719C7.75518 10.8764 8.50648 10.6533 9.14684 10.231C9.78721 9.80861 10.2879 9.20592 10.5855 8.49913C10.8831 7.79235 10.9643 7.01321 10.8189 6.26028C10.6734 5.50735 10.3078 4.81445 9.76834 4.26922C9.22884 3.72399 8.53969 3.35092 7.78803 3.1972C7.03638 3.04348 6.25599 3.11601 5.54559 3.40563C4.83519 3.69525 4.22668 4.18894 3.79703 4.82425C3.36738 5.45957 3.13588 6.20797 3.13183 6.97479C3.12586 7.48431 3.22108 7.98994 3.41199 8.46242C3.6029 8.93489 3.8857 9.36481 4.24401 9.72728C4.60233 10.0897 5.02904 10.3776 5.49942 10.574C5.9698 10.7705 6.47451 10.8718 6.98432 10.8719H6.98797Z"></path>
                 </svg>
-                <p className="crancy-userprofile__info-text">{address}</p>
+                <p className="crancy-userprofile__info-text">{email}</p>
               </div>
               <div className="crancy-achievement">
                 {/* <div className="crancy-achievement__single">
@@ -64,14 +62,14 @@ function TeamCard({ profile }) {
                   <div className="crancy-achievement__content">
                     <h4 className="crancy-achievement__title">
                       {percentageShare}
-                      <span>Total Tasks</span>
+                      <span>Owned shares</span>
                     </h4>
                   </div>
                 </div>
               </div>
               <Link
                 className="crancy-achievement__btn"
-                to={`/profile-overview/${identity}`}
+                to={`/profile-overview/${id}`}
               >
                 <svg
                   width="15"
@@ -93,4 +91,4 @@ function TeamCard({ profile }) {
   );
 }
 
-export default TeamCard;
+export default BeneficiaryCard;

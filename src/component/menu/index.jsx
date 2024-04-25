@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 // import logo from "../../assets/img/logo-dark.png";
 import logoWhite from "../../assets/img/logo-white.png";
 import logo from "../../assets/img/logo.png";
-import logoIcon from "../../assets/img/logo-icon.png";
+import logoIcon from "../../assets/img/aviation-logo.png";
 import arrowIcon from "../../assets/img/arrow-icon.svg";
 import inboxEdit from "../../assets/img/inbox-edit.svg";
 import inboxAuthor from "../../assets/img/inbox-author.png";
@@ -30,8 +30,8 @@ function Menu({ toggleMenu, menu }) {
         <div className="logo crancy-sidebar-padding pd-right-0">
           <Link className="crancy-logo" to="/">
             {/* <!-- Logo for Default --> */}
-            <img className="crancy-logo__main" src={logo} alt="#" />
-            <img className="crancy-logo__main--dark" src={logoWhite} alt="#" />
+            <img className="crancy-logo__main" src={logoIcon} alt="#" />
+            <img className="crancy-logo__main--dark" src={logoIcon} alt="#" />
             {/* <!-- Logo for Dark Version --> */}
             <img className="crancy-logo__main--small" src={logoIcon} alt="#" />
             <img

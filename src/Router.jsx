@@ -41,6 +41,8 @@ import SettingsFaq from "./pages/settings/faq";
 import TermsAndCondition from "./pages/settings/terms-and-conditions";
 import SupportTicket from "./pages/support-ticket";
 import Airline from "./pages/airline";
+import AirlineActivity from "./pages/airline/AirlineActivity";
+import Beneficiary from "./pages/profile-overview/beneficiary";
 
 const router = createBrowserRouter([
   {
@@ -147,7 +149,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/airlines",
-        element: <Airline />,
+        children: [
+          {
+            index: true,
+            element: <Airline />,
+          },
+          {
+            path: ":id",
+            element: <AirlineActivity />,
+          },
+        ],
       },
 
       {
@@ -163,8 +174,8 @@ const router = createBrowserRouter([
             element: <Overview />,
           },
           {
-            path: "activities",
-            element: <Activities />,
+            path: "beneficiaries",
+            element: <Beneficiary />,
           },
           {
             path: "projects",
