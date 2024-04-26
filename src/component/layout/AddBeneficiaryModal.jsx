@@ -64,11 +64,11 @@ const AddBeneficiaryModal = () => {
   return (
     <div className="fixed w-screen h-screen bg-[#00000090] top-[0] z-[100000] flex items-center justify-center">
       <div className="bg-[#FFF] h-[80%] w-[60%] rounded-[5px]">
-        <div className="w-full h-full rounded-[5px] px-[2rem]  divide-y">
-          <div className="py-4">
+        <div className="w-full flex flex-col h-full rounded-[5px] px-[2rem]  divide-y">
+          <div className="flex flex-none h-[5rem] items-center">
             <h3 className="text-[1.3rem] font-[700] ">Add Beneficiary</h3>
           </div>
-          <div className="py-3">
+          <div className="py-3 flex-1  overflow-x-hidden">
             <div className="mb-3">
               <div>
                 <label htmlFor="">Name</label>
@@ -98,6 +98,7 @@ const AddBeneficiaryModal = () => {
                   type="tel"
                   placeholder="+2348092314576"
                   className="px-3"
+                  maxLength={11}
                   required
                   onChange={formik.handleChange("phoneNumber")}
                 />
@@ -125,13 +126,31 @@ const AddBeneficiaryModal = () => {
                     placeholder="Account Number"
                     className="px-3"
                     required
+                    maxLength={10}
                     onChange={formik.handleChange("beneficiaryAccount")}
                   />
                 </div>
               )}
             </div>
+            <div className="mb-3 flex ">
+              <div className="flex-1">
+                <div>
+                  <label htmlFor="">Share Percent</label>
+                  <p>{formik.values.percentageShare}%</p>
+                </div>
+                <input
+                  type="range"
+                  name="percentage"
+                  min="0"
+                  max="100"
+                  defaultValue="0"
+                  onChange={formik.handleChange("percentageShare")}
+                  className="w-[350px] mt-[8px] rounded-lg focus:outline-none focus:border-blue-500"
+                />
+              </div>
+            </div>
           </div>
-          <div className="flex justify-between py-4">
+          <div className="flex  flex-none h-[5rem] items-center justify-between">
             <button
               className="flex-none w-36 bg-[#F5F5F5] border-none rounded-[5px]"
               onClick={handleCloseModal}

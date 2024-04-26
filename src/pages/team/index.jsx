@@ -15,12 +15,12 @@ import { useStore } from "../../utils/store/useStore";
 function Teams() {
   const [contracts, setContracts] = useState([]);
 
+  const baseUrl = import.meta.env.VITE_BASE_URL;
   const { openContract } = useStore();
   useMenu();
+
   const getContracts = async () => {
-    const { data } = await axios.get(
-      "https://testaviationmedicals.azurewebsites.net/api/Shareholder/get-shareholder"
-    );
+    const { data } = await axios.get(`${baseUrl}/Shareholder/get-shareholder`);
 
     if (data.success) {
       console.log(data.data);

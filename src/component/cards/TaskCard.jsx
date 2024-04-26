@@ -1,43 +1,29 @@
+import moment from "moment";
 import React from "react";
 import { Link } from "react-router-dom";
 
 function TaskCard({ task }) {
-  const { title, assign, status, teamMembers } = task;
+  const { id, shareHolderName, identity, amount, transactionDate } = task;
   return (
     <div className="col-xxl-3 col-lg-6 col-md-6 col-12">
       {/* <!-- Single Task --> */}
       <div
-        className={`crancy-tasksingle ${
-          status === "Done"
-            ? "crancy-color2__opacity--bg"
-            : status === "Hold"
-            ? "crancy-color3__opacity--bg"
-            : status === "Cancel"
-            ? "crancy-color4__opacity--bg"
-            : "crancy-color1__opacity--bg"
-        } mg-top-25`}
+        className={`crancy-tasksingle  crancy-color1__opacity--bg mg-top-25`}
       >
         <h4 className="crancy-tasksingle__title">
-          <Link to="#">{title}</Link>
+          <Link to="#">{shareHolderName}</Link>
         </h4>
         <p className="crancy-tasksingle__assign">
-          Assign :
-          <span
-            className={
-              status === "Done"
-                ? "crancy-gcolor"
-                : status === "Hold"
-                ? "crancy-color3"
-                : status === "Cancel"
-                ? "crancy-rcolor"
-                : "crancy-pcolor"
-            }
-          >
+          Amount :<span className={"crancy-pcolor"}> {amount}</span>
+        </p>
+        <p className="crancy-tasksingle__assign">
+          Date :
+          <span className={"crancy-pcolor"}>
             {" "}
-            {assign}
+            {moment(transactionDate).format("MMM Do YYYY")}
           </span>
         </p>
-        <div
+        {/* <div
           className={`crancy-tasksingle__label ${
             status === "Done"
               ? "crancy-progress__done"
@@ -57,7 +43,7 @@ function TaskCard({ task }) {
               <img src={teamMember} alt="author-img" />
             </Link>
           ))}
-        </div>
+        </div> */}
       </div>
       {/* <!-- End Single Task --> */}
     </div>

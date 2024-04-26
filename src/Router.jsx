@@ -178,7 +178,7 @@ const router = createBrowserRouter([
             element: <Beneficiary />,
           },
           {
-            path: "projects",
+            path: "history",
             element: <Projects />,
           },
           {

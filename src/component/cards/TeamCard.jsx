@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import totalProjectImg from "../../assets/img/total-project.png";
 import totalTaskImg from "../../assets/img/total-task.png";
 import coverImage from "../../assets/img/cover_03.jpg";
 import img from "../../assets/img/follower.png";
+import axios from "axios";
 
 function TeamCard({ profile }) {
   const {
@@ -20,6 +21,24 @@ function TeamCard({ profile }) {
     bankCode,
     percentageShare,
   } = profile;
+
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const [histories, setHistories] = useState([]);
+
+  const getHistories = async () => {
+    const { data } = await axios.get(
+      `${baseUrl}/Transaction/get-shareholdersharing-by-Id?ShareholderId=${identity}`
+    );
+
+    if (data.success) {
+      console.log(data.data);
+      setHistories(data.data);
+    }
+  };
+
+  useEffect(() => {
+    getHistories();
+  });
   return (
     <div className="col-xxl-3 col-lg-4 col-md-6 col-12">
       {/* <!-- crancy User Profile --> */}
@@ -63,8 +82,8 @@ function TeamCard({ profile }) {
                   <img src={totalTaskImg} alt="" />
                   <div className="crancy-achievement__content">
                     <h4 className="crancy-achievement__title">
-                      {percentageShare}
-                      <span>Total Tasks</span>
+                      {histories.length}
+                      <span>Total History</span>
                     </h4>
                   </div>
                 </div>

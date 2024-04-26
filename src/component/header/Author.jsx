@@ -1,8 +1,13 @@
 import React from "react";
 import profile from "../../assets/img/profile-pic.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Author({ subNav, setSubNav, title }) {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("x-access-token");
+    navigate("/login");
+  };
   return (
     <div className="crancy-header__author" onMouseOver={() => setSubNav(title)}>
       <Link to="/profile-overview">
@@ -20,7 +25,7 @@ function Author({ subNav, setSubNav, title }) {
         <ul className="crancy-balance_list">
           <li>
             <div className="crancy-balance-info">
-              <div className="crancy-balance__img crancy-sbcolor">
+              <div className="crancy-balance__img crancy-sbcolor flex items-center justify-center">
                 <svg
                   width="14"
                   height="20"
@@ -45,7 +50,7 @@ function Author({ subNav, setSubNav, title }) {
           </li>
           <li>
             <div className="crancy-balance-info">
-              <div className="crancy-balance__img crancy-color8__bg">
+              <div className="crancy-balance__img crancy-color8__bg flex items-center justify-center">
                 <svg
                   width="16"
                   height="14"
@@ -73,7 +78,7 @@ function Author({ subNav, setSubNav, title }) {
           </li>
           <li>
             <div className="crancy-balance-info">
-              <div className="crancy-balance__img crancy-color5__bg">
+              <div className="crancy-balance__img crancy-color5__bg flex items-center justify-center">
                 <svg
                   width="17"
                   height="17"
@@ -105,7 +110,7 @@ function Author({ subNav, setSubNav, title }) {
           </li>
           <li>
             <div className="crancy-balance-info">
-              <div className="crancy-balance__img crancy-color6__bg">
+              <div className="crancy-balance__img crancy-color6__bg flex items-center justify-center">
                 <svg
                   width="19"
                   height="21"
@@ -125,8 +130,11 @@ function Author({ subNav, setSubNav, title }) {
             </div>
           </li>
           <li>
-            <div className="crancy-balance-info">
-              <div className="crancy-balance__img crancy-color4__bg">
+            <div
+              className="crancy-balance-info cursor-pointer"
+              onClick={handleLogout}
+            >
+              <div className="crancy-balance__img crancy-color4__bg flex items-center justify-center">
                 <svg
                   width="19"
                   height="18"
@@ -145,7 +153,7 @@ function Author({ subNav, setSubNav, title }) {
                 </svg>
               </div>
               <h4 className="crancy-balance-name">
-                <a href="#">Log Out</a>
+                <a>Log Out</a>
               </h4>
             </div>
           </li>

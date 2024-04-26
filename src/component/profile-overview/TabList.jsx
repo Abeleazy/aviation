@@ -35,14 +35,14 @@ function TabList() {
         >
           Beneficiaries
         </Link>
-        {/* <Link
+        <Link
           className={`list-group-item ${
-            lastPath === "documents" ? "active" : ""
+            lastPath === "history" ? "active" : ""
           }`}
-          to="documents"
+          to="history"
         >
-          Documents
-        </Link> */}
+          Share History
+        </Link>
         {/* <Link
           className={`list-group-item ${
             lastPath === "gallery" ? "active" : ""
