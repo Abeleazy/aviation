@@ -1,31 +1,31 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import bg from "../../assets/img/credential-bg.svg";
-import logoW from "../../assets/img/logo-white.png";
+import logoW from "../../assets/img/aviation-logo.png";
 import welcomeImg from "../../assets/img/welcome-vector.png";
 
 function LoginLayout({ children }) {
   return (
-    <div className="body-bg">
+    <div className="w-screen h-screen">
       <section
-        className="crancy-wc crancy-wc__full crancy-bg-cover"
+        className="w-screen h-screen"
         style={{ backgroundImage: `url(${bg})` }}
       >
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div className="crancy-wc__form">
+        <div className="">
+          <div className="">
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="crancy-wc__form h-[50%] overflow-hidden">
                 {/* <!-- Welcome Banner --> */}
-                <div className="crancy-wc__form--middle">
-                  <div className="crancy-wc__banner">
+                <div className="flex w-[80%] h-[50%] overflow-hidden">
+                  <div className="crancy-wc__banner flex-1 overflow-hidden">
                     <div className="crancy-wc__logo">
-                      <Link to="/">
+                      {/* <Link to="/">
                         <img src={logoW} alt="#" />
-                      </Link>
+                      </Link> */}
                     </div>
-                    <img src={welcomeImg} alt="#" />
+                    <img src={welcomeImg} alt="#" className="w-full h-full" />
                   </div>
-                  <div className="crancy-wc__form-inner">
+                  <div className="bg-[#FFF] flex-1 px-8 flex flex-col justify-center">
                     {/* <!-- Sign in Form --> */}
                     {children}
                     <Outlet />
@@ -35,7 +35,7 @@ function LoginLayout({ children }) {
                 {/* <!-- End Welcome Banner --> */}
                 {/* <!-- Footer Top --> */}
                 <div className="crancy-wc__footer--top">
-                  <div className="crancy-wc__footer">
+                  {/* <div className="crancy-wc__footer">
                     <ul className="crancy-wc__footer--list list-none">
                       <li>
                         <Link to="#">Terms & Condition</Link>
@@ -57,9 +57,10 @@ function LoginLayout({ children }) {
                         <option value="3">Frances</option>
                       </select>
                     </div>
-                  </div>
+                  </div> */}
                   <p className="crancy-wc__footer--copyright">
-                    @ 2023 <a href="#">Dashra.</a> All Right Reserved.{" "}
+                    @ 2024 <a href="#">Aviation Medical Assist.</a> All Right
+                    Reserved.{" "}
                   </p>
                 </div>
                 {/* <!-- End Footer Top --> */}
