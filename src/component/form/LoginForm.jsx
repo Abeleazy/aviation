@@ -43,7 +43,7 @@ function LoginForm() {
   return (
     <>
       <div className="crancy-wc__heading">
-        <h3 className="crancy-wc__form-title crancy-wc__form-title__one">
+        <h3 className="crancy-wc__form-title crancy-wc__form-title__one text-center">
           Login to your account
         </h3>
       </div>
@@ -102,7 +102,9 @@ function LoginForm() {
         <div className="form-group form-mg-top25">
           <div className="crancy-wc__button">
             <button
-              className="ntfmax-wc__btn"
+              className={`bg-[#0a82fd] text-[#ffffff] rounded-[5px] hover:bg-[#2F3042] ${
+                isLoading ? `bg-[#2F3042]` : ``
+              }`}
               type="submit"
               disabled={isLoading}
               onClick={formik.handleSubmit}

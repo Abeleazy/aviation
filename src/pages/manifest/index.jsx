@@ -6,16 +6,17 @@ import InnerWrapper from "../../component/home-three/InnerWrapper";
 import AnalyticsConversions from "../../component/home/AnalyticsConversions";
 import useMenu from "../../hooks/useMenu";
 import Sidebar from "../../component/home/Sidebar";
+import AirlineActivitySection from "../../component/airline/AirlineActivitySection";
 
 function Manifest() {
   useMenu();
   return (
     <Layout>
-      <BreadCrumb title="Statistics" link="statistics" />
+      <BreadCrumb title="Manifest" link="" />
       <div className="row">
         <InnerWrapper>
           {/* <AnalyticsConversions title="Market History" /> */}
-          <ActivitySection />
+          <AirlineActivitySection />
         </InnerWrapper>
         <Sidebar />
       </div>

@@ -11,13 +11,13 @@ import axios from "axios";
 
 function Airline() {
   const [airlines, setAirlines] = useState([]);
-  // const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("");
   useMenu();
 
+  const baseurl = import.meta.env.VITE_BASE_URL;
+
   const getAirlines = async () => {
-    const { data } = await axios.get(
-      "https://testaviationmedicals.azurewebsites.net/api/airline/get-airline"
-    );
+    const { data } = await axios.get(`${baseurl}/airline/get-airline`);
     if (data.success) {
       console.log(data.data);
       setAirlines(data.data);
@@ -34,6 +34,10 @@ function Airline() {
   //   setAirlines(filteredAirlines);
   // };
 
+  const handleSearch = (e) => {
+    console.log(e.target.value);
+    setQuery(e.target.value);
+  };
   useEffect(() => {
     getAirlines();
   }, []);
@@ -43,8 +47,8 @@ function Airline() {
       <BreadCrumb title="Airlines" link="/airlines" />
       <Wrapper>
         <div className="col-lg-12 col-12">
-          <SearchBar />
-          <AirlineCom airlines={airlines} />
+          <SearchBar handleSearch={handleSearch} />
+          <AirlineCom airlines={airlines} query={query} />
         </div>
         {/* <Sidebar3 /> */}
       </Wrapper>

@@ -10,22 +10,66 @@ import axios from "axios";
 function AirlineActivitySection({ className, id }) {
   const [page, setPage] = useState(1);
   const [show, setShow] = useState(4);
+  const [query, setQuery] = useState("");
+  const [queryStatus, setQueryStatus] = useState("");
+
+  const [airlines, setAirlines] = useState(["All Airline"]);
 
   const [manifests, setManifests] = useState([]);
-  const getAirlineData = async () => {
-    const { data } = await axios.get(
-      `https://testaviationmedicals.azurewebsites.net/api/Airline/get-airline-data?AirlineId=${id}`
-    );
+  const baseurl = import.meta.env.VITE_BASE_URL;
+
+  const filterManifest = manifests.filter(
+    (e) =>
+      e.airlineName.toLowerCase().includes(query.toLowerCase()) &&
+      e.status.toLowerCase().includes(queryStatus.toLowerCase())
+  );
+
+  const handleStatusFilter = (value) => {
+    if (value.toLowerCase() === "All Transaction".toLowerCase()) {
+      setQueryStatus("");
+    } else {
+      setQueryStatus(value);
+    }
+  };
+
+  const getAllManifests = async () => {
+    const { data } = await axios.get(`${baseurl}/Airline/getallairlinedata`);
 
     if (data.success) {
-      // const newM = data.data.filter((e) => Date(e.dateCreated) === Date.now());
       setManifests(data.data);
-      console.log(data.data);
     }
   };
 
   useEffect(() => {
-    getAirlineData();
+    // const l = filterManifest.length;
+    // setShow(l);
+    // // setPage(1);
+    // console.log(l);
+  }, [filterManifest]);
+
+  const handleChange = (value) => {
+    if (value.toLowerCase() === "All Airline".toLowerCase()) {
+      setQuery("");
+    } else {
+      setQuery(value);
+    }
+  };
+
+  const getAirlines = async () => {
+    const { data } = await axios.get(`${baseurl}/airline/get-airline`);
+    if (data.success) {
+      for (let i = 0; i < data.data.length; i++) {
+        const element = data.data[i].name;
+        const newE = airlines;
+        newE.push(element);
+        setAirlines(newE);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getAllManifests();
+    getAirlines();
   }, []);
   return (
     <div className={`${className ? className : "crancy-table"} mg-top-30`}>
@@ -50,13 +94,8 @@ function AirlineActivitySection({ className, id }) {
                 <div className="crancy-table-filter__single crancy-table-filter__location">
                   <label htmlFor="crancy-table-filter__label">Airline</label>
                   <SelectBox
-                    datas={[
-                      "Airline",
-                      "New York",
-                      "Sydney",
-                      "Dhaka",
-                      "Victoria",
-                    ]}
+                    datas={airlines}
+                    action={handleChange}
                     img={<i className="fa-solid fa-chevron-down"></i>}
                   />
                 </div>
@@ -96,7 +135,14 @@ function AirlineActivitySection({ className, id }) {
                     Transaction Type
                   </label>
                   <SelectBox
-                    datas={["All transaction", "Paypal", "Stripe", "Payoneer"]}
+                    datas={[
+                      "All transaction",
+                      "Completed",
+                      "Pending",
+                      "Successful",
+                      "Failed",
+                    ]}
+                    action={handleStatusFilter}
                     img={<i className="fa-solid fa-chevron-down"></i>}
                   />
                 </div>
@@ -139,7 +185,7 @@ function AirlineActivitySection({ className, id }) {
             </thead>
             {/* <!-- crancy Table Body --> */}
             <tbody className="crancy-table__body">
-              {manifests?.map((manifest, index) => {
+              {filterManifest?.map((manifest, index) => {
                 const current = page * show;
                 const previous = current - show;
                 if (
@@ -210,7 +256,7 @@ function AirlineActivitySection({ className, id }) {
                   </a>
                 </li>
                 {Array.from(
-                  Array(Math.ceil(orders.length / show)).keys("n")
+                  Array(Math.ceil(filterManifest.length / show)).keys("n")
                 ).map((id, index) => (
                   <li
                     className={`paginate_button page-item ${

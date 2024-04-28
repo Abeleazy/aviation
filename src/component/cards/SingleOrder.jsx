@@ -1,6 +1,7 @@
 import React from "react";
 import usdIcon from "../../assets/img/usd-icon.png";
 import moment from "moment";
+import { truncateWords } from "../../utils/common/common";
 
 function SingleOrder({ order }) {
   const {
@@ -22,7 +23,7 @@ function SingleOrder({ order }) {
       <td className="crancy-table__column-1 crancy-table__data-1">
         <div className="crancy-table__product--id">
           <p className="crany-table__product--number">
-            <a href="#">{policyNo}</a>
+            <a href="#">{truncateWords(policyNo, 5)}</a>
           </p>
         </div>
       </td>
@@ -32,7 +33,9 @@ function SingleOrder({ order }) {
             <img src={img} alt="#" />
           </div> */}
           <div className="crancy-table__product-content">
-            <h4 className="crancy-table__product-title">{airlineName}</h4>
+            <h4 className="crancy-table__product-title">
+              {truncateWords(airlineName, 8)}
+            </h4>
           </div>
         </div>
       </td>
@@ -46,7 +49,7 @@ function SingleOrder({ order }) {
       </td>
       <td className="crancy-table__column-5 crancy-table__data-5">
         <div className="crancy-table__amount crancy-table__text-two">
-          <img src={usdIcon} alt="#" />
+          {/* <img src={usdIcon} alt="#" /> */}
           <span className="crancy-table__text">{takeOFF}</span>
         </div>
       </td>

@@ -3,14 +3,17 @@ import filterIcon from "../../assets/img/filter-icon2.svg";
 import locationIcon from "../../assets/img/location.svg";
 import SelectBox from "../form/SelectBox";
 
-function SearchBar() {
+function SearchBar({ handleSearch }) {
   return (
-    <div className="crancy-user-search mg-top-40">
+    <div className="bg-[#FFFFFF] p-2 rounded-[5px]">
       {/* <!-- Single Search --> */}
-      <div className="crancy-user-search__single crancy-user-search__single--sform">
-        <div className="crancy-header__form crancy-header__form--user">
-          <form className="crancy-header__form-inner" action="#">
-            <button className="search-btn" type="submit">
+      <div className="">
+        <div className="">
+          <div className="flex" action="#">
+            <div
+              className="flex w-[50px] items-center justify-center"
+              type="submit"
+            >
               <svg
                 width="20"
                 height="20"
@@ -35,9 +38,15 @@ function SearchBar() {
                   strokeLinejoin="round"
                 />
               </svg>
-            </button>
-            <input name="s" type="text" placeholder="Airline" />
-          </form>
+            </div>
+            <input
+              name="s"
+              type="text"
+              placeholder="Airline"
+              className="bg-transparent border-0 px-3"
+              onChange={handleSearch}
+            />
+          </div>
         </div>
       </div>
       {/* <!-- End Single Search --> */}

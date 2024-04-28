@@ -43,6 +43,7 @@ import SupportTicket from "./pages/support-ticket";
 import Airline from "./pages/airline";
 import AirlineActivity from "./pages/airline/AirlineActivity";
 import Beneficiary from "./pages/profile-overview/beneficiary";
+import Manifest from "./pages/manifest";
 
 const router = createBrowserRouter([
   {
@@ -97,7 +98,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/manifest",
-        element: <Statistics />,
+        element: <Manifest />,
       },
       {
         path: "/inbox",

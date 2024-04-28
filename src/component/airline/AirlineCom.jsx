@@ -4,12 +4,15 @@ import AirlineCard from "../cards/AirlineCard";
 import Pagination from "../teams/Pagination";
 import axios from "axios";
 
-function AirlineCom({ airlines }) {
+function AirlineCom({ airlines, query }) {
   // const [airlines, setAirlines] = useState([]);
 
+  const filertAirlines = airlines.filter((e) =>
+    e.name.toLowerCase().includes(query.toLowerCase())
+  );
   return (
     <div className="row">
-      {airlines?.map((airline) => (
+      {filertAirlines?.map((airline) => (
         <AirlineCard airline={airline} key={airline.id} />
       ))}
       {/* <Pagination className={"crancy-pagination__v3"} /> */}

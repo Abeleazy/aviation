@@ -11,7 +11,7 @@ function Statistics() {
   useMenu();
   return (
     <Layout>
-      <BreadCrumb title="Statistics" link="statistics" />
+      <BreadCrumb title="" link="manifest" />
       <div className="row">
         <InnerWrapper>
           {/* <AnalyticsConversions title="Market History" /> */}

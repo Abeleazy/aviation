@@ -11,12 +11,12 @@ function LoginLayout({ children }) {
         className="w-screen h-screen"
         style={{ backgroundImage: `url(${bg})` }}
       >
-        <div className="">
-          <div className="">
+        <div className="w-full h-full">
+          <div className="w-full h-full">
             <div className="w-full h-full flex items-center justify-center">
-              <div className="crancy-wc__form h-[50%] overflow-hidden">
+              <div className="w-full h-full flex flex-col items-center justify-center">
                 {/* <!-- Welcome Banner --> */}
-                <div className="flex w-[80%] h-[50%] overflow-hidden">
+                <div className="flex w-[80%] h-[80%] overflow-hidden">
                   <div className="crancy-wc__banner flex-1 overflow-hidden">
                     <div className="crancy-wc__logo">
                       {/* <Link to="/">

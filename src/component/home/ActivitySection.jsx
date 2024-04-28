@@ -10,22 +10,35 @@ import axios from "axios";
 function ActivitySection({ className }) {
   const [page, setPage] = useState(1);
   const [show, setShow] = useState(4);
+  const [airlines, setAirlines] = useState(["Airline"]);
 
   const [manifests, setManifests] = useState([]);
+  const baseurl = import.meta.env.VITE_BASE_URL;
   const getAllManifests = async () => {
-    const { data } = await axios.get(
-      "https://testaviationmedicals.azurewebsites.net/api/Airline/getallairlinedata"
-    );
+    const { data } = await axios.get(`${baseurl}/Airline/getallairlinedata`);
 
     if (data.success) {
-      // const newM = data.data.filter((e) => Date(e.dateCreated) === Date.now());
       setManifests(data.data);
+    }
+  };
+
+  const getAirlines = async () => {
+    const { data } = await axios.get(`${baseurl}/airline/get-airline`);
+    if (data.success) {
       console.log(data.data);
+      for (let i = 0; i < data.data.length; i++) {
+        const element = array[i].name;
+        const newE = airlines;
+        console.log("new", newE);
+        newE.push(element);
+        setAirlines(newE);
+      }
     }
   };
 
   useEffect(() => {
     getAllManifests();
+    getAirlines();
   }, []);
   return (
     <div className={`${className ? className : "crancy-table"} mg-top-30`}>
@@ -50,13 +63,7 @@ function ActivitySection({ className }) {
                 <div className="crancy-table-filter__single crancy-table-filter__location">
                   <label htmlFor="crancy-table-filter__label">Airline</label>
                   <SelectBox
-                    datas={[
-                      "Airline",
-                      "New York",
-                      "Sydney",
-                      "Dhaka",
-                      "Victoria",
-                    ]}
+                    datas={airlines}
                     img={<i className="fa-solid fa-chevron-down"></i>}
                   />
                 </div>

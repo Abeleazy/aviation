@@ -7,6 +7,7 @@ import Sidebar from "../../component/home/Sidebar";
 import Layout from "../../component/home/Layout";
 import BodyWrapper from "../../component/home/BodyWrapper";
 import useMenu from "../../hooks/useMenu";
+import AirlineActivitySection from "../../component/airline/AirlineActivitySection";
 
 function Home() {
   useMenu();
@@ -16,7 +17,7 @@ function Home() {
         <ProgressCom />
         <SalesCharts />
         {/* <AnalyticsConversions /> */}
-        <ActivitySection />
+        <AirlineActivitySection />
       </BodyWrapper>
       <Sidebar />
     </Layout>
