@@ -42,17 +42,17 @@ function LoginForm() {
   };
   return (
     <>
-      <div className="crancy-wc__heading">
+      <div className="grid gap-4">
         <h3 className="crancy-wc__form-title crancy-wc__form-title__one text-center">
           Login to your account
         </h3>
       </div>
-      <div className="crancy-wc__form-main">
+      <div className="grid gap-3">
         {/* <!-- Form Group --> */}
         <div className="form-group">
           <div className="form-group__input">
             <input
-              className="crancy-wc__form-input"
+              className="px-4"
               type="email"
               name="email"
               placeholder="admin@mail.com"
@@ -65,7 +65,7 @@ function LoginForm() {
         <div className="form-group">
           <div className="form-group__input">
             <input
-              className="crancy-wc__form-input"
+              className="px-4"
               placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
               id="password-field"
               type="password"
@@ -99,11 +99,11 @@ function LoginForm() {
           </div>
         </div>
         {/* <!-- Form Group --> */}
-        <div className="form-group form-mg-top25">
-          <div className="crancy-wc__button">
+        <div className="">
+          <div className="">
             <button
-              className={`bg-[#0a82fd] text-[#ffffff] rounded-[5px] hover:bg-[#2F3042] ${
-                isLoading ? `bg-[#2F3042]` : ``
+              className={`text-[#ffffff] rounded-[5px] hover:bg-[#2F3042] ${
+                isLoading ? `bg-[#2F3042]` : `bg-[#0a82fd]`
               }`}
               type="submit"
               disabled={isLoading}

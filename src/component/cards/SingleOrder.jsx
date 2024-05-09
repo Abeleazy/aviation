@@ -19,44 +19,40 @@ function SingleOrder({ order }) {
     flightStatus,
   } = order;
   return (
-    <tr>
-      <td className="crancy-table__column-1 crancy-table__data-1">
+    <tr className="even:bg-[#F9F9F9] hover:bg-[#F9F9F9] w-fit oveflow-y">
+      <td className="w-64 py-3 px-4">
         <div className="crancy-table__product--id">
           <p className="crany-table__product--number">
-            <a href="#">{truncateWords(policyNo, 5)}</a>
+            <a href="#">{policyNo}</a>
           </p>
         </div>
       </td>
-      <td className="crancy-table__column-2 crancy-table__data-2">
+      <td className="w-[40rem] py-3 px-4">
         <div className="crancy-table__product">
           {/* <div className="crancy-table__product-img">
             <img src={img} alt="#" />
           </div> */}
           <div className="crancy-table__product-content">
-            <h4 className="crancy-table__product-title">
-              {truncateWords(airlineName, 8)}
-            </h4>
+            <h4 className="crancy-table__product-title">{airlineName}</h4>
           </div>
         </div>
       </td>
-      <td className="crancy-table__column-3 crancy-table__data-3">
-        <p className="crancy-table__text crancy-table__time">
-          {moment(dateCreated).format("MMMM Do YYYY")}
-        </p>
+      <td className="w-[40rem] py-3 px-4">
+        <p className="">{moment(dateCreated).format("MMMM Do YYYY")}</p>
       </td>
-      <td className="crancy-table__column-4 crancy-table__data-4">
+      <td className="w-64 py-3 px-4">
         <h5 className="crancy-table__inner--title">{name}</h5>
       </td>
-      <td className="crancy-table__column-5 crancy-table__data-5">
+      <td className="w-64 py-3 px-4">
         <div className="crancy-table__amount crancy-table__text-two">
           {/* <img src={usdIcon} alt="#" /> */}
           <span className="crancy-table__text">{takeOFF}</span>
         </div>
       </td>
-      <td className="crancy-table__column-6 crancy-table__data-6">
+      <td className="w-64 py-3 px-4">
         <h5 className="crancy-table__inner--title">{destination}</h5>
       </td>
-      <td className="crancy-table__column-7 crancy-table__data-7">
+      <td className="w-64 py-3 px-4">
         <div
           className={`crancy-table__status ${
             status.toLowerCase() === "pending"

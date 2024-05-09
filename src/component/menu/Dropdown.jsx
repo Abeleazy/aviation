@@ -22,9 +22,9 @@ function Dropdown({ name, options, dropdown, setDropdown, img }) {
           data-bs-target="#menu-item__apps"
           onClick={() => setDropdown(name)}
         >
-          <span className="menu-bar__text">
-            <span className="crancy-menu-icon crancy-svg-icon__v1">{img}</span>
-            <span className="menu-bar__name">{name}</span>
+          <span className="flex items-center justify-center">
+            {img}
+            <span className="text-[1rem] font-[500]">{name}</span>
           </span>
           <span className="crancy__toggle"></span>
         </Link>
@@ -39,8 +39,11 @@ function Dropdown({ name, options, dropdown, setDropdown, img }) {
           {options.map((option) => (
             <li key={option.title} onClick={() => setDropdown(name)}>
               <Link to={`/${option.link}`}>
-                <span className="menu-bar__text">
-                  <span className="menu-bar__name ">{option.title}</span>
+                <span className="flex items-center justify-center text-gray-300 hover:text-blue-400">
+                  <i class="fa-solid fa-plus font-[300] mr-3 text-[1.2rem] hover:text-blue-400"></i>
+                  <span className="text-[.9rem] font-[500]">
+                    {option.title}
+                  </span>
                 </span>
               </Link>
             </li>

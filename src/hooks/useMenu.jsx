@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 function useMenu() {
   useEffect(() => {
     const menu = document
-      .getElementsByClassName("crancy-smenu")[0]
+      .getElementsByClassName("newMenu")[0]
       .classList.value.includes("crancy-close");
     if (menu) {
       document

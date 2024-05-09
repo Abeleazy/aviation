@@ -148,9 +148,9 @@ function SaleHistory() {
       <div className="charts-main charts-home-one mg-top-30">
         {/* <!-- Top Heading --> */}
         <div className="charts-main__heading  mg-btm-20">
-          <h4 className="charts-main__title">Sell History</h4>
+          <h4 className="charts-main__title">Remittance</h4>
           <div className="charts-main__middle">
-            <ul className="crancy-progress-list crancy-progress-list__inline ">
+            {/* <ul className="crancy-progress-list crancy-progress-list__inline ">
               <li>
                 <span className="crancy-progress-list__color "></span>
                 <p>
@@ -161,12 +161,17 @@ function SaleHistory() {
                 <span className="crancy-progress-list__color crancy-color9__bg"></span>
                 <p>Total Sell</p>
               </li>
-            </ul>
+            </ul> */}
           </div>
           {/* <!-- Chart Dropdown Menu --> */}
-          <SelectInput
-            options={[" Last 7 Days", " Last 15 Days", "Last Month"]}
-          />
+          {/* <SelectInput
+            options={[
+              " Last 7 Days",
+              " Last 15 Days",
+              "Last Month",
+              "Last Year",
+            ]}
+          /> */}
           {/* <!-- End Chart Dropdown Menu --> */}
         </div>
         <div className="charts-main__one">

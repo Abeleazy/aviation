@@ -13,7 +13,7 @@ function Manifest() {
   return (
     <Layout>
       <BreadCrumb title="Manifest" link="" />
-      <div className="row">
+      <div className="w-full grid gap-5">
         <InnerWrapper>
           {/* <AnalyticsConversions title="Market History" /> */}
           <AirlineActivitySection />

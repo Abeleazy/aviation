@@ -44,6 +44,9 @@ import Airline from "./pages/airline";
 import AirlineActivity from "./pages/airline/AirlineActivity";
 import Beneficiary from "./pages/profile-overview/beneficiary";
 import Manifest from "./pages/manifest";
+import ManageBatch from "./pages/claims/ManageBatch";
+import ApproveClaims from "./pages/claims/ApproveClaims";
+import ProcessClaims from "./pages/claims/ProcessClaim";
 
 const router = createBrowserRouter([
   {
@@ -158,6 +161,23 @@ const router = createBrowserRouter([
           {
             path: ":id",
             element: <AirlineActivity />,
+          },
+        ],
+      },
+      {
+        path: "/claims",
+        children: [
+          {
+            path: "manage-batch",
+            element: <ManageBatch />,
+          },
+          {
+            path: "approve-claims",
+            element: <ApproveClaims />,
+          },
+          {
+            path: "process-claims",
+            element: <ProcessClaims />,
           },
         ],
       },

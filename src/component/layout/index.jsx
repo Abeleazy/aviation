@@ -28,7 +28,7 @@ function Layout({ children }) {
 
   return (
     <div id="crancy-dark-light" className="relative">
-      <div className="crancy-body-area">
+      <div className="crancy-body-area overflow-y">
         <Menu toggleMenu={toggleMenu} menu={menu} />
         <Header toggleMenu={toggleMenu} menu={menu} />
         <Outlet />

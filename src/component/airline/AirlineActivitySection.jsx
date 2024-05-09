@@ -76,7 +76,7 @@ function AirlineActivitySection({ className, id }) {
       <div className="crancy-table__heading">
         <h3 className="crancy-table__title mb-0">Recent Activity</h3>
         <SelectInput
-          options={[" Last 7 Days", " Last 15 Days", "Last Month"]}
+          options={[" Last 7 Days", " Last 15 Days", "Last Month", "Last Year"]}
         />
       </div>
       <div className="tab-content" id="myTabContent">
@@ -158,33 +158,19 @@ function AirlineActivitySection({ className, id }) {
             className="crancy-table__main crancy-table__main-v1"
           >
             {/* <!-- crancy Table Head --> */}
-            <thead className="crancy-table__head">
-              <tr>
-                <th className="crancy-table__column-1 crancy-table__h1">
-                  Policy No
-                </th>
-                <th className="crancy-table__column-2 crancy-table__h2">
-                  Airline
-                </th>
-                <th className="crancy-table__column-3 crancy-table__h3">
-                  Date
-                </th>
-                <th className="crancy-table__column-4 crancy-table__h4">
-                  Customer
-                </th>
-                <th className="crancy-table__column-5 crancy-table__h5">
-                  Take Off
-                </th>
-                <th className="crancy-table__column-6 crancy-table__h6">
-                  Destination
-                </th>
-                <th className="crancy-table__column-7 crancy-table__h7">
-                  Status
-                </th>
+            <thead className="py-5">
+              <tr className="bg-[#F1F1F1] px-4 py-2">
+                <th className="py-3 px-4">Policy No</th>
+                <th className="py-3 px-4">Airline</th>
+                <th className="py-3 px-4">Date</th>
+                <th className="py-3 px-4">Customer</th>
+                <th className="py-3 px-4">Take Off</th>
+                <th className="py-3 px-4">Destination</th>
+                <th className="py-3 px-4">Status</th>
               </tr>
             </thead>
             {/* <!-- crancy Table Body --> */}
-            <tbody className="crancy-table__body">
+            <tbody className="">
               {filterManifest?.map((manifest, index) => {
                 const current = page * show;
                 const previous = current - show;

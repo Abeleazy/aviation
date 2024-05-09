@@ -23,11 +23,11 @@ function Countries() {
     getAllAirlines();
   }, []);
   return (
-    <div className="col-xl-12 col-lg-6 col-md-6 col-12 crancy-sidebar__widget">
-      <div className="crancy-sidebar__single">
+    <div className="flex flex-1 crancy-sidebar__widget last:ml-5 h-full">
+      <div className="crancy-sidebar__single w-full h-full">
         {/* <!-- Sidebar Heading --> */}
         <div className="crancy-sidebar__heading">
-          <h4 className="crancy-sidebar__title">Countries</h4>
+          <h4 className="crancy-sidebar__title">Airlines</h4>
 
           <SelectInput
             options={[
@@ -35,6 +35,8 @@ function Countries() {
               "Last 7 Days",
               "Last 15 Days",
               "Last 30 Days",
+              "Last Month",
+              "Last Year",
             ]}
           />
         </div>

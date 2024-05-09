@@ -4,7 +4,7 @@ import arrowDown from "../../assets/img/arrow-down.svg";
 import LineChart from "../chart/LineChart";
 
 const data = {
-  labels: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"],
+  labels: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri","Sat"],
   datasets: [
     {
       label: "Visitor",
@@ -17,7 +17,7 @@ const data = {
     },
     {
       label: "Visitor",
-      data: [0, 20, 40, 20, 40, 60, 50, 60],
+      data: [5, 20, 40, 20, 40, 60, 50, 60],
       backgroundColor: "#F2C94C15",
       borderColor: "#F2C94C",
       borderWidth: 2,
@@ -92,8 +92,8 @@ function VisitorSource() {
       {/* <!-- Charts Two --> */}
       <div className="charts-main charts-home-two  mg-top-30">
         <div className="charts-main__heading  mg-btm-20 charts-main__heading--v2">
-          <h4 className="charts-main__title">Visitor Source</h4>
-          <div className="charts-main-dates">
+          <h4 className="charts-main__title">Claims</h4>
+          {/* <div className="charts-main-dates">
             <img src={calenderIcon} />
             <input
               id="date-input"
@@ -102,7 +102,7 @@ function VisitorSource() {
               type="text"
             />
             <img src={arrowDown} />
-          </div>
+          </div> */}
         </div>
         <div className="crancy-chart__inside crancy-chart__two">
           <LineChart options={options} data={data} />

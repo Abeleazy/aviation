@@ -3,8 +3,8 @@ import daygridPlugin from "@fullcalendar/daygrid";
 
 function CalenderSm() {
   return (
-    <div className="col-xl-12 col-lg-6 col-md-6 col-12 crancy-sidebar__widget">
-      <div className="crancy-sidebar__single">
+    <div className="flex flex-1 w-full last:ml-[5rem] h-full">
+      <div className="crancy-sidebar__single w-full h-full">
         <div className="crancy-default-cd">
           <FullCalendar
             selectable={true}

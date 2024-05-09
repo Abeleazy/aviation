@@ -24,13 +24,13 @@ function Menu({ toggleMenu, menu }) {
   };
   return (
     <div
-      className={`crancy-smenu z-[6000] ${menu && "crancy-close"}`}
+      className={`newMenu fixed w-[18rem] z-[6000]  h-screen`}
       id="CrancyMenu"
     >
       {/* <!-- Admin Menu --> */}
-      <div className={`admin-menu ${dropdown ? "no-overflow" : ""}`}>
+      <div className={`h-full flex flex-col`}>
         {/* <!-- Logo --> */}
-        <div className="logo crancy-sidebar-padding pd-right-0">
+        <div className="flex  items-center h-[5rem] justify-between pl-5 py-2">
           <Link className="crancy-logo" to="/">
             {/* <!-- Logo for Default --> */}
             <img className="crancy-logo__main" src={logoIcon} alt="#" />
@@ -53,11 +53,11 @@ function Menu({ toggleMenu, menu }) {
         </div>
 
         {/* <!-- Main Menu --> */}
-        <div className="admin-menu__one crancy-sidebar-padding mg-top-20">
+        <div className="bg-[#FFF] flex flex-1 overflow-hidden px-4">
           {/* <h4 className="admin-menu__title">Menu</h4> */}
           {/* <!-- Nav Menu --> */}
-          <div className="menu-bar">
-            <ul id="CrancyMenu" className="menu-bar__one crancy-dashboard-menu">
+          <div className="menu-scroll overflow-scroll w-full h-full pb-5">
+            <ul id="CrancyMenu" className="grid gap-4">
               {/* <Dropdown
                 name="Dashboards"
                 dropdown={dropdown}
@@ -99,91 +99,25 @@ function Menu({ toggleMenu, menu }) {
                 className={location.pathname === "/dashboard" ? "active" : ""}
               >
                 <Link className="collapsed" to="/dashboard">
-                  <span className="menu-bar__text">
-                    <span className="crancy-menu-icon crancy-svg-icon__v1">
-                      <svg
-                        className="crancy-svg-icon"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M2 4C2 2.89543 2.89543 2 4 2H8C9.10457 2 10 2.89543 10 4V8C10 9.10457 9.10457 10 8 10H4C2.89543 10 2 9.10457 2 8V4Z"
-                          strokeWidth="1.5"
-                        />
-                        <path
-                          d="M22 6C22 8.20914 20.2091 10 18 10C15.7909 10 14 8.20914 14 6C14 3.79086 15.7909 2 18 2C20.2091 2 22 3.79086 22 6Z"
-                          strokeWidth="1.5"
-                        />
-                        <path
-                          d="M10 18C10 20.2091 8.20914 22 6 22C3.79086 22 2 20.2091 2 18C2 15.7909 3.79086 14 6 14C8.20914 14 10 15.7909 10 18Z"
-                          strokeWidth="1.5"
-                        />
-                        <path
-                          d="M14 16C14 14.8954 14.8954 14 16 14H20C21.1046 14 22 14.8954 22 16V20C22 21.1046 21.1046 22 20 22H16C14.8954 22 14 21.1046 14 20V16Z"
-                          strokeWidth="1.5"
-                        />
-                      </svg>
-                    </span>
-                    <span className="menu-bar__name">Dashboard</span>
+                  <span className="flex items-center justify-center">
+                    <i class="fa-solid fa-gauge font-[300] mr-3 text-[1.2rem]"></i>
+                    <span className="text-[1rem] font-[500]">Dashboard</span>
                   </span>
                 </Link>
               </li>
               <li className={location.pathname === "/airlines" ? "active" : ""}>
                 <Link className="collapsed" to="/airlines">
-                  <span className="menu-bar__text">
-                    <span className="crancy-menu-icon crancy-svg-icon__v1">
-                      <svg
-                        className="crancy-svg-icon"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M21.8025 10.0128C21.0104 6.08419 17.9158 2.98956 13.9872 2.19745C12.9045 1.97914 12 2.89543 12 4V10C12 11.1046 12.8954 12 14 12H20C21.1046 12 22.0209 11.0955 21.8025 10.0128Z"
-                          strokeWidth="1.5"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M9 4.22314C4.99202 5.1326 2 8.71695 2 13.0001C2 17.9707 6.02944 22.0001 11 22.0001C15.2832 22.0001 18.8675 19.0081 19.777 15.0001"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </span>
-                    <span className="menu-bar__name">Airlines</span>
+                  <span className="flex items-center justify-center">
+                    <i class="fa-regular fa-paper-plane font-[300] mr-3 text-[1.2rem]"></i>
+                    <span className="text-[1rem] font-[500]">Airlines</span>
                   </span>
                 </Link>
               </li>
               <li className={location.pathname === "/manifest" ? "active" : ""}>
                 <Link className="collapsed" to="/manifest">
-                  <span className="menu-bar__text">
-                    <span className="crancy-menu-icon crancy-svg-icon__v1">
-                      <svg
-                        className="crancy-svg-icon"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M21.8025 10.0128C21.0104 6.08419 17.9158 2.98956 13.9872 2.19745C12.9045 1.97914 12 2.89543 12 4V10C12 11.1046 12.8954 12 14 12H20C21.1046 12 22.0209 11.0955 21.8025 10.0128Z"
-                          strokeWidth="1.5"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M9 4.22314C4.99202 5.1326 2 8.71695 2 13.0001C2 17.9707 6.02944 22.0001 11 22.0001C15.2832 22.0001 18.8675 19.0081 19.777 15.0001"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </span>
-                    <span className="menu-bar__name">Manifest</span>
+                  <span className="flex items-center justify-center">
+                    <i className="fa-solid fa-chart-line font-[300] mr-3 text-[1.2rem]"></i>
+                    <span className="text-[1rem] font-[500]">Manifest</span>
                   </span>
                 </Link>
               </li>
@@ -195,126 +129,53 @@ function Menu({ toggleMenu, menu }) {
                   to="/dashboard"
                   onClick={handleComingSoon}
                 >
-                  <span className="menu-bar__text">
-                    <span className="crancy-menu-icon crancy-svg-icon__v1">
-                      <svg
-                        className="crancy-svg-icon"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M21.8025 10.0128C21.0104 6.08419 17.9158 2.98956 13.9872 2.19745C12.9045 1.97914 12 2.89543 12 4V10C12 11.1046 12.8954 12 14 12H20C21.1046 12 22.0209 11.0955 21.8025 10.0128Z"
-                          strokeWidth="1.5"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M9 4.22314C4.99202 5.1326 2 8.71695 2 13.0001C2 17.9707 6.02944 22.0001 11 22.0001C15.2832 22.0001 18.8675 19.0081 19.777 15.0001"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </span>
-                    <span className="menu-bar__name">Customers</span>
+                  <span className="flex items-center justify-center">
+                    <i class="fa-solid fa-users font-[300] mr-3 text-[1.2rem]"></i>
+                    <span className="text-[1rem] font-[500]">Customers</span>
                   </span>
                 </Link>
               </li>
-              <li className={location.pathname === "/claims" ? "active" : ""}>
-                <Link
-                  className="collapsed"
-                  to="/dashboard"
-                  onClick={handleComingSoon}
-                >
-                  <span className="menu-bar__text">
-                    <span className="crancy-menu-icon crancy-svg-icon__v1">
-                      <svg
-                        className="crancy-svg-icon"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M21.8025 10.0128C21.0104 6.08419 17.9158 2.98956 13.9872 2.19745C12.9045 1.97914 12 2.89543 12 4V10C12 11.1046 12.8954 12 14 12H20C21.1046 12 22.0209 11.0955 21.8025 10.0128Z"
-                          strokeWidth="1.5"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M9 4.22314C4.99202 5.1326 2 8.71695 2 13.0001C2 17.9707 6.02944 22.0001 11 22.0001C15.2832 22.0001 18.8675 19.0081 19.777 15.0001"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </span>
-                    <span className="menu-bar__name">Claims</span>
-                  </span>
-                </Link>
-              </li>
-              <li className={location.pathname === "/provider" ? "active" : ""}>
-                <Link
-                  className="collapsed pe-auto"
-                  to="/dashboard"
-                  onClick={handleComingSoon}
-                >
-                  {/* <button className="collapsed"></button> */}
-                  {/* <div className="collapsed"> */}
-                  <span className="menu-bar__text">
-                    <span className="crancy-menu-icon crancy-svg-icon__v1">
-                      <svg
-                        className="crancy-svg-icon"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M21.8025 10.0128C21.0104 6.08419 17.9158 2.98956 13.9872 2.19745C12.9045 1.97914 12 2.89543 12 4V10C12 11.1046 12.8954 12 14 12H20C21.1046 12 22.0209 11.0955 21.8025 10.0128Z"
-                          strokeWidth="1.5"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M9 4.22314C4.99202 5.1326 2 8.71695 2 13.0001C2 17.9707 6.02944 22.0001 11 22.0001C15.2832 22.0001 18.8675 19.0081 19.777 15.0001"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </span>
-                    <span className="menu-bar__name">Provider</span>
-                  </span>
-                  {/* </div> */}
-                </Link>
-              </li>
+              <Dropdown
+                name="Claims"
+                dropdown={dropdown}
+                setDropdown={handleDropdown}
+                options={[
+                  { link: "claims/manage-batch", title: "Manage Batch(es)" },
+                  { link: "", title: "Reset Batch" },
+                  { link: "", title: "Online Tracker" },
+                  { link: "claims/process-claims", title: "Process Claims" },
+                  { link: "", title: "Appeal Claims" },
+                  { link: "", title: "Manage Refunds" },
+                  { link: "claims/approve-claims", title: "Approve Claims" },
+                  { link: "", title: "Batch for Payment" },
+                  { link: "", title: "Pay Claims" },
+                  { link: "", title: "Payment Advise" },
+                ]}
+                img={
+                  <i class="fa-solid fa-pen-nib font-[300] mr-3 text-[1.2rem]"></i>
+                }
+              />
+              <Dropdown
+                name="Provider"
+                dropdown={dropdown}
+                setDropdown={handleDropdown}
+                options={[
+                  { link: "", title: "Create Provider" },
+                  { link: "", title: "Endorse Provider" },
+                  { link: "", title: "No-Auth Mapping" },
+                  { link: "", title: "Plan-Provider Mapping" },
+                ]}
+                img={
+                  <i class="fa-solid fa-truck-fast font-[300] mr-3 text-[1.2rem]"></i>
+                }
+              />
               <li
                 className={location.pathname === "/contracts" ? "active" : ""}
               >
                 <Link className="collapsed" to="/contracts">
-                  <span className="menu-bar__text">
-                    <span className="crancy-menu-icon crancy-svg-icon__v1">
-                      <svg
-                        className="crancy-svg-icon"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M21.8025 10.0128C21.0104 6.08419 17.9158 2.98956 13.9872 2.19745C12.9045 1.97914 12 2.89543 12 4V10C12 11.1046 12.8954 12 14 12H20C21.1046 12 22.0209 11.0955 21.8025 10.0128Z"
-                          strokeWidth="1.5"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M9 4.22314C4.99202 5.1326 2 8.71695 2 13.0001C2 17.9707 6.02944 22.0001 11 22.0001C15.2832 22.0001 18.8675 19.0081 19.777 15.0001"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </span>
-                    <span className="menu-bar__name">Contracts</span>
+                  <span className="flex items-center justify-center">
+                    <i class="fa-solid fa-user-tie font-[300] mr-3 text-[1.2rem]"></i>
+                    <span className="text-[1rem] font-[500]">Contracts</span>
                   </span>
                 </Link>
               </li>
@@ -573,10 +434,10 @@ function Menu({ toggleMenu, menu }) {
           {/* <!-- End Nav Menu --> */}
         </div>
 
-        <div className="crancy-sidebar-padding pd-btm-40">
-          {/* <h4 className="admin-menu__title">Help</h4> */}
-          {/* <!-- Nav Menu --> */}
-          {/* <div className="menu-bar">
+        {/* <div className="crancy-sidebar-padding pd-btm-40"> */}
+        {/* <h4 className="admin-menu__title">Help</h4> */}
+        {/* <!-- Nav Menu --> */}
+        {/* <div className="menu-bar">
             <ul className="menu-bar__one crancy-dashboard-menu" id="CrancyMenu">
               <li
                 className={
@@ -749,9 +610,9 @@ function Menu({ toggleMenu, menu }) {
               </li>
             </ul>
           </div> */}
-          {/* <!-- End Nav Menu --> */}
-          {/* <!-- Support Card --> */}
-          {/* <div
+        {/* <!-- End Nav Menu --> */}
+        {/* <!-- Support Card --> */}
+        {/* <div
             className="crancy-support-card crancy-bg-cover"
             style={{ backgroundImage: `url(${bg})` }}
           >
@@ -769,8 +630,8 @@ function Menu({ toggleMenu, menu }) {
               Go To Help Center
             </Link>
           </div> */}
-          {/* <!-- End Support Card --> */}
-        </div>
+        {/* <!-- End Support Card --> */}
+        {/* </div> */}
       </div>
     </div>
   );

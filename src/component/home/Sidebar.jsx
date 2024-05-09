@@ -5,9 +5,9 @@ import CalenderSm from "../cards/CalenderSm";
 
 function Sidebar() {
   return (
-    <div className="col-xxl-3 col-12 crancy-main__sidebar">
-      <div className="crancy-sidebar mg-top-30">
-        <div className="row">
+    <div className="w-full h-full">
+      <div className="w-full h-full">
+        <div className="flex w-full h-full">
           <Countries />
           <CalenderSm />
           {/* <TopSeller /> */}
