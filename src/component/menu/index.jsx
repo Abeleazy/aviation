@@ -96,7 +96,11 @@ function Menu({ toggleMenu, menu }) {
                 }
               /> */}
               <li
-                className={location.pathname === "/dashboard" ? "active" : ""}
+                className={
+                  location.pathname === "/dashboard"
+                    ? "active text-primaryColor"
+                    : ""
+                }
               >
                 <Link className="collapsed" to="/dashboard">
                   <span className="flex items-center justify-center">
@@ -105,7 +109,13 @@ function Menu({ toggleMenu, menu }) {
                   </span>
                 </Link>
               </li>
-              <li className={location.pathname === "/airlines" ? "active" : ""}>
+              <li
+                className={
+                  location.pathname === "/airlines"
+                    ? "active text-primaryColor"
+                    : ""
+                }
+              >
                 <Link className="collapsed" to="/airlines">
                   <span className="flex items-center justify-center">
                     <i class="fa-regular fa-paper-plane font-[300] mr-3 text-[1.2rem]"></i>
@@ -113,7 +123,13 @@ function Menu({ toggleMenu, menu }) {
                   </span>
                 </Link>
               </li>
-              <li className={location.pathname === "/manifest" ? "active" : ""}>
+              <li
+                className={
+                  location.pathname === "/manifest"
+                    ? "active text-primaryColor"
+                    : ""
+                }
+              >
                 <Link className="collapsed" to="/manifest">
                   <span className="flex items-center justify-center">
                     <i className="fa-solid fa-chart-line font-[300] mr-3 text-[1.2rem]"></i>
@@ -122,7 +138,11 @@ function Menu({ toggleMenu, menu }) {
                 </Link>
               </li>
               <li
-                className={location.pathname === "/customers" ? "active" : ""}
+                className={
+                  location.pathname === "/customers"
+                    ? "active text-primaryColor"
+                    : ""
+                }
               >
                 <Link
                   className="collapsed"
@@ -173,7 +193,11 @@ function Menu({ toggleMenu, menu }) {
                 }
               />
               <li
-                className={location.pathname === "/contracts" ? "active" : ""}
+                className={
+                  location.pathname === "/contracts"
+                    ? "active text-primaryColor"
+                    : ""
+                }
               >
                 <Link className="collapsed" to="/contracts">
                   <span className="flex items-center justify-center">

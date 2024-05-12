@@ -48,6 +48,7 @@ import ManageBatch from "./pages/claims/ManageBatch";
 import ApproveClaims from "./pages/claims/ApproveClaims";
 import ProcessClaims from "./pages/claims/ProcessClaim";
 import CreateProvider from "./pages/provider/CreatePovider";
+import ContractHistorySection from "./component/contract/ContractHistorySection";
 
 const router = createBrowserRouter([
   {
@@ -210,7 +211,7 @@ const router = createBrowserRouter([
           },
           {
             path: "history",
-            element: <Projects />,
+            element: <ContractHistorySection />,
           },
           {
             path: "documents",
