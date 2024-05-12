@@ -16,10 +16,10 @@ function TopSeller() {
           <h4 className="crancy-sidebar__title">Top Seller</h4>
           <SelectInput
             options={[
-              "View All",
-              "Last 7 Days",
-              "Last 15 Days",
-              "Last 30 Days",
+              { value: "", key: "View All" },
+              { value: "", key: "Last 7 Days" },
+              { value: "", key: "Last 15 Days" },
+              { value: "", key: "Last 30 Days" },
             ]}
           />
         </div>

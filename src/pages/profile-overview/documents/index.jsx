@@ -17,10 +17,10 @@ function Documents() {
           <h3 className="crancy-table__title mb-0">Recent Activity</h3>
           <SelectInput
             options={[
-              "View All",
-              "Last 7 Days",
-              "Last 15 Days",
-              "Last 30 Days",
+              { value: "", key: "View All" },
+              { value: "", key: "Last 7 Days" },
+              { value: "", key: "Last 15 Days" },
+              { value: "", key: "Last 30 Days" },
             ]}
           />
         </div>

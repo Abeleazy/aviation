@@ -6,23 +6,26 @@ import calendarIcon from "../../assets/img/calendar-icon.svg";
 import SelectBox from "../form/SelectBox";
 import Pikaday from "../pikaday";
 import axios from "axios";
+import moment from "moment";
 
 function AirlineActivitySection({ className, id }) {
   const [page, setPage] = useState(1);
   const [show, setShow] = useState(4);
   const [query, setQuery] = useState("");
   const [queryStatus, setQueryStatus] = useState("");
+  const [filter, setFilter] = useState(null);
+  const [filterManifest, setFilterManifest] = useState([]);
 
   const [airlines, setAirlines] = useState(["All Airline"]);
 
   const [manifests, setManifests] = useState([]);
   const baseurl = import.meta.env.VITE_BASE_URL;
 
-  const filterManifest = manifests.filter(
-    (e) =>
-      e.airlineName.toLowerCase().includes(query.toLowerCase()) &&
-      e.status.toLowerCase().includes(queryStatus.toLowerCase())
-  );
+  // let filterManifest = manifests.filter(
+  //   (e) =>
+  //     e.airlineName.toLowerCase().includes(query.toLowerCase()) &&
+  //     e.status.toLowerCase().includes(queryStatus.toLowerCase())
+  // );
 
   const handleStatusFilter = (value) => {
     if (value.toLowerCase() === "All Transaction".toLowerCase()) {
@@ -37,15 +40,27 @@ function AirlineActivitySection({ className, id }) {
 
     if (data.success) {
       setManifests(data.data);
+      setFilterManifest(data.data);
     }
   };
 
   useEffect(() => {
-    // const l = filterManifest.length;
-    // setShow(l);
-    // // setPage(1);
-    // console.log(l);
-  }, [filterManifest]);
+    console.log(filter);
+    const filtering = moment().subtract(filter, "days");
+    const filterByDate = manifests.filter((item) =>
+      moment(item.dateCreated).isSameOrAfter(filtering)
+    );
+    setFilterManifest(filterByDate);
+    console.log(filterByDate);
+  }, [filter]);
+
+  useEffect(() => {
+    const filterData = manifests.filter((e) =>
+      e.airlineName.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setFilterManifest(filterData);
+  }, [query]);
 
   const handleChange = (value) => {
     if (value.toLowerCase() === "All Airline".toLowerCase()) {
@@ -78,7 +93,14 @@ function AirlineActivitySection({ className, id }) {
       <div className="crancy-table__heading">
         <h3 className="crancy-table__title mb-0">Recent Activity</h3>
         <SelectInput
-          options={[" Last 7 Days", " Last 15 Days", "Last Month", "Last Year"]}
+          options={[
+            { value: 7, key: "Last 7 Days" },
+            { value: 15, key: "Last 15 Days" },
+            { value: 30, key: "Last Month" },
+            { value: 365, key: "Last Year" },
+            { value: "", key: "Custom" },
+          ]}
+          handleChange={setFilter}
         />
       </div>
       <div className="tab-content w-full" id="myTabContent">
@@ -103,18 +125,18 @@ function AirlineActivitySection({ className, id }) {
                 </div>
                 {/* <!-- End Single Filter --> */}
               </div>
-              <div className="col-lg-3 col-md-6 col-12">
-                {/* <!-- Single Filter --> */}
+              {/* <div className="col-lg-3 col-md-6 col-12"> */}
+              {/* <!-- Single Filter --> */}
 
-                <div className="crancy-table-filter__single crancy-table-filter__amount">
+              {/* <div className="crancy-table-filter__single crancy-table-filter__amount">
                   <label htmlFor="crancy-table-filter__label">Amount</label>
                   <SelectBox
                     datas={["$2,000", "$4,000", "$3,000", "$4,000", "$5,000"]}
                     img={<i className="fa-solid fa-chevron-down"></i>}
                   />
-                </div>
-                {/* <!-- End Single Filter --> */}
-              </div>
+                </div> */}
+              {/* <!-- End Single Filter --> */}
+              {/* </div> */}
               <div className="col-lg-3 col-md-6 col-12">
                 {/* <!-- Single Filter --> */}
                 <div className="crancy-table-filter__single crancy-table-filter__trans-date">

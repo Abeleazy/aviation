@@ -19,11 +19,11 @@ function SingleOrder({ order }) {
     flightStatus,
   } = order;
   return (
-    <tr className="even:bg-[#F9F9F9] hover:bg-[#F9F9F9] w-fit oveflow-y">
+    <tr className="even:bg-[#F9F9F9] hover:bg-[#F9F9F9] w-fit oveflow-scroll">
       <td className="w-64 py-3 px-4">
         <div className="crancy-table__product--id">
-          <p className="crany-table__product--number">
-            <a href="#">{policyNo}</a>
+          <p className="crany-table__product--number text-primaryColor">
+            {policyNo}
           </p>
         </div>
       </td>

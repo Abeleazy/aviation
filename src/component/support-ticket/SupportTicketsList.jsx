@@ -37,7 +37,11 @@ function SupportTicketsList() {
               />
             </form>
             <SelectInput
-              options={["Last 7 days", "Last 15 days", "Last 30 days"]}
+              options={[
+                { value: "", key: "Last 7 days" },
+                { value: "", key: "Last 15 days" },
+                { value: "", key: "Last 30 days" },
+              ]}
             />
           </div>
         </div>

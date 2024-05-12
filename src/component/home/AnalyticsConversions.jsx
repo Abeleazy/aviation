@@ -150,7 +150,11 @@ function AnalyticsConversions({ title }) {
               </ul>
             </div>
             <SelectInput
-              options={[" Last 7 Days", " Last 15 Days", "Last Month"]}
+              options={[
+                { value: "", key: " Last 7 Days" },
+                { value: "", key: " Last 15 Days" },
+                { value: "", key: "Last Month" },
+              ]}
             />
           </div>
           <div className="charts-main__three">

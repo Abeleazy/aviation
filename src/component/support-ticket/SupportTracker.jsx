@@ -217,7 +217,11 @@ function SupportTracker() {
             <div className="charts-main__heading mg-btm-10">
               <h4 className="support-tracker-box__title">Support Tracker</h4>
               <SelectInput
-                options={["Last 7 Days", "Last 15 Days", "Last 30 Days"]}
+                options={[
+                  { value: "", key: "Last 7 Days" },
+                  { value: "", key: "Last 15 Days" },
+                  { value: "", key: "Last 30 Days" },
+                ]}
               />
             </div>
             <div className="crancy-chart__inside crancy-chart__five">

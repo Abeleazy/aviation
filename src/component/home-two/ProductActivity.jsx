@@ -14,7 +14,11 @@ function ProductActivity() {
       <div className="crancy-table__heading">
         <h3 className="crancy-table__title mb-0">Prodcuts Activity</h3>
         <SelectInput
-          options={[" Last 7 Days", " Last 15 Days", "Last Month"]}
+          options={[
+            { value: "", key: " Last 7 Days" },
+            { value: "", key: " Last 15 Days" },
+            { value: "", key: "Last Month" },
+          ]}
         />
       </div>
       <div className="tab-content" id="myTabContent">

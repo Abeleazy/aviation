@@ -59,7 +59,11 @@ function Map() {
         <div className="charts-main__heading  mg-btm-20">
           <h4 className="charts-main__title">Traffic by Country</h4>
           <SelectInput
-            options={[" Last 7 Days", " Last 15 Days", "Last Month"]}
+            options={[
+              { value: "", key: " Last 7 Days" },
+              { value: "", key: " Last 15 Days" },
+              { value: "", key: "Last Month" },
+            ]}
           />
         </div>
         <div className="charts-main__one">

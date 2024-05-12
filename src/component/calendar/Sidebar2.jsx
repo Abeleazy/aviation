@@ -14,7 +14,11 @@ function Sidebar2() {
         <div className="crancy-sidebar__heading">
           <h3 className="crancy-sidebar__title m-0">Upcoming Events</h3>
           <SelectInput
-            options={["Last 7 Days", "Last 15 Days", "Last 30 Days"]}
+            options={[
+              { value: "", key: "Last 7 Days" },
+              { value: "", key: "Last 15 Days" },
+              { value: "", key: "Last 30 Days" },
+            ]}
           />
         </div>
 

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function SelectInput({ options }) {
+function SelectInput({ options, handleChange }) {
   const [show, setShow] = useState(false);
   const [selected, setSelected] = useState(options[0]);
+
   return (
     <div className="crancy-chart__dropdown">
       <ul
@@ -30,7 +31,7 @@ function SelectInput({ options }) {
               justifyContent: "space-between",
             }}
           >
-            {selected}
+            {selected.key}
             <span className="crancy-sidebar__arrow--icon">
               <svg
                 width="12"
@@ -65,11 +66,12 @@ function SelectInput({ options }) {
                 onClick={(e) => {
                   setShow(!show);
                   setSelected(option);
+                  handleChange(option.value);
                   e.preventDefault();
                 }}
                 key={option}
               >
-                {option}
+                {option.key}
               </Link>
             ))}
           </ul>
