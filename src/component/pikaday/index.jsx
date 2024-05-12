@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DayPicker from "react-daypicker";
 import "react-daypicker/lib/DayPicker.css";
 
-function Pikaday() {
+function Pikaday({ handleChange }) {
   const [active, setActive] = useState(false);
   const [day, setDay] = useState(new Date());
 
@@ -24,7 +24,13 @@ function Pikaday() {
           }
         }}
       >
-        <DayPicker active={new Date()} onDayClick={(day) => setDay(day)} />
+        <DayPicker
+          active={new Date()}
+          onDayClick={(day) => {
+            setDay(day);
+            handleChange(day);
+          }}
+        />
       </div>
     </>
   );

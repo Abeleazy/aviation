@@ -15,6 +15,7 @@ function AirlineActivitySection({ className, id }) {
   const [queryStatus, setQueryStatus] = useState("");
   const [filter, setFilter] = useState(null);
   const [filterManifest, setFilterManifest] = useState([]);
+  const [tDate, setTDate] = useState(null);
 
   const [airlines, setAirlines] = useState(["All Airline"]);
 
@@ -61,6 +62,30 @@ function AirlineActivitySection({ className, id }) {
 
     setFilterManifest(filterData);
   }, [query]);
+
+  useEffect(() => {
+    const filtering = moment(tDate, "ddd MMM DD YYYY HH:mm:ss [GMT]Z").format(
+      "YYYY-MM-DD"
+    );
+    if (filterManifest.length > 0) {
+      const filterByDate = filterManifest.filter((item) => 
+        moment(filtering).isSame(moment(item.dateCreated).format("YYYY-MM-DD"))
+      );
+      setFilterManifest(filterByDate);
+      console.log(filterByDate);
+      console.log(tDate);
+      console.log(filtering);
+    } else {
+      const filterByDate = manifests.filter((item) => 
+        moment(filtering).isSame(moment(item.dateCreated).format("YYYY-MM-DD"))
+      );
+      setFilterManifest(filterByDate);
+      console.log(filterByDate);
+      console.log(tDate);
+      console.log(filtering);
+    }
+    // console.log(filtering);
+  }, [tDate]);
 
   const handleChange = (value) => {
     if (value.toLowerCase() === "All Airline".toLowerCase()) {
@@ -112,8 +137,8 @@ function AirlineActivitySection({ className, id }) {
         >
           {/* <!-- Table Filter --> */}
           <div className="crancy-table-filter mg-btm-20">
-            <div className="row">
-              <div className="col-lg-3 col-md-6 col-12">
+            <div className="grid grid-cols-3 gap-3">
+              <div className="w-full">
                 {/* <!-- Single Filter --> */}
                 <div className="crancy-table-filter__single crancy-table-filter__location">
                   <label htmlFor="crancy-table-filter__label">Airline</label>
@@ -137,14 +162,14 @@ function AirlineActivitySection({ className, id }) {
                 </div> */}
               {/* <!-- End Single Filter --> */}
               {/* </div> */}
-              <div className="col-lg-3 col-md-6 col-12">
+              <div className="w-full">
                 {/* <!-- Single Filter --> */}
                 <div className="crancy-table-filter__single crancy-table-filter__trans-date">
                   <label htmlFor="crancy-table-filter__label">
                     Transaction Date
                   </label>
                   <div className="crancy-table-filter__group">
-                    <Pikaday />
+                    <Pikaday handleChange={setTDate} />
                     <span className="crancy-table-filter__icon">
                       <img src={calendarIcon} />
                     </span>
@@ -152,7 +177,7 @@ function AirlineActivitySection({ className, id }) {
                 </div>
                 {/* <!-- End Single Filter --> */}
               </div>
-              <div className="col-lg-3 col-md-6 col-12">
+              <div className="w-full">
                 {/* <!-- Single Filter --> */}
                 <div className="crancy-table-filter__single crancy-table-filter__trans">
                   <label htmlFor="crancy-table-filter__label">

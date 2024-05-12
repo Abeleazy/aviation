@@ -69,7 +69,7 @@ function SelectInput({ options, handleChange }) {
                   handleChange(option.value);
                   e.preventDefault();
                 }}
-                key={option}
+                key={option.value}
               >
                 {option.key}
               </Link>
