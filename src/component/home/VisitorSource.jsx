@@ -88,9 +88,9 @@ const options = {
 
 function VisitorSource() {
   return (
-    <div className="flex flex-1 crancy-sixth-two">
+    <div className="col-span-1 w-full crancy-sixth-two">
       {/* <!-- Charts Two --> */}
-      <div className="charts-main charts-home-two  mg-top-30">
+      <div className="charts-main w-full charts-home-two  mg-top-30">
         <div className="charts-main__heading  mg-btm-20 charts-main__heading--v2">
           <h4 className="charts-main__title">Claims</h4>
           {/* <div className="charts-main-dates">

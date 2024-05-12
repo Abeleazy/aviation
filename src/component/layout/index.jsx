@@ -29,9 +29,17 @@ function Layout({ children }) {
   return (
     <div id="crancy-dark-light" className="relative">
       <div className="crancy-body-area overflow-y">
-        <Menu toggleMenu={toggleMenu} menu={menu} />
-        <Header toggleMenu={toggleMenu} menu={menu} />
-        <Outlet />
+        <div className="w-[18rem] z-[9999999]">
+          <Menu toggleMenu={toggleMenu} menu={menu} />
+        </div>
+        <div className="relative w-full overflow-x-hidden">
+          <div className="fixed w-full bg-[#FFF] z-[999999]">
+            <Header toggleMenu={toggleMenu} menu={menu} />
+          </div>
+          <div className="w-full pt-[5rem]">
+            <Outlet />
+          </div>
+        </div>
       </div>
       {openBeneficiary && <AddBeneficiaryModal />}
       {openContract && <AddContractModal />}

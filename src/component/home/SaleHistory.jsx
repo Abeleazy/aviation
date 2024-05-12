@@ -143,9 +143,9 @@ const options = {
 };
 function SaleHistory() {
   return (
-    <div className="flex flex-2 crancy-sixth-one">
+    <div className="col-span-2">
       {/* <!-- Charts One --> */}
-      <div className="charts-main charts-home-one mg-top-30">
+      <div className="charts-main w-full charts-home-one mg-top-30">
         {/* <!-- Top Heading --> */}
         <div className="charts-main__heading  mg-btm-20">
           <h4 className="charts-main__title">Remittance</h4>
