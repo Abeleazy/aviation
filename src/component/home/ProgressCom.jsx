@@ -34,7 +34,7 @@ function ProgressCom() {
     getTotalRemittance();
   }, []);
   return (
-    <div className="row">
+    <div className="flex">
       <ProgressCard
         count={manifest.toString()}
         name="Total Manifest"

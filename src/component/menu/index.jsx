@@ -141,15 +141,15 @@ function Menu({ toggleMenu, menu }) {
                 setDropdown={handleDropdown}
                 options={[
                   { link: "claims/manage-batch", title: "Manage Batch(es)" },
-                  { link: "", title: "Reset Batch" },
-                  { link: "", title: "Online Tracker" },
+                  { link: "dashboard", title: "Reset Batch" },
+                  { link: "dashboard", title: "Online Tracker" },
                   { link: "claims/process-claims", title: "Process Claims" },
-                  { link: "", title: "Appeal Claims" },
-                  { link: "", title: "Manage Refunds" },
+                  { link: "dashboard", title: "Appeal Claims" },
+                  { link: "dashboard", title: "Manage Refunds" },
                   { link: "claims/approve-claims", title: "Approve Claims" },
-                  { link: "", title: "Batch for Payment" },
-                  { link: "", title: "Pay Claims" },
-                  { link: "", title: "Payment Advise" },
+                  { link: "dashboard", title: "Batch for Payment" },
+                  { link: "dashboard", title: "Pay Claims" },
+                  { link: "dashboard", title: "Payment Advise" },
                 ]}
                 img={
                   <i class="fa-solid fa-pen-nib font-[300] mr-3 text-[1.2rem]"></i>
@@ -160,10 +160,13 @@ function Menu({ toggleMenu, menu }) {
                 dropdown={dropdown}
                 setDropdown={handleDropdown}
                 options={[
-                  { link: "", title: "Create Provider" },
-                  { link: "", title: "Endorse Provider" },
-                  { link: "", title: "No-Auth Mapping" },
-                  { link: "", title: "Plan-Provider Mapping" },
+                  {
+                    link: "providers/create-provider",
+                    title: "Create Provider",
+                  },
+                  { link: "dashboard", title: "Endorse Provider" },
+                  { link: "dashboard", title: "No-Auth Mapping" },
+                  { link: "dashboard", title: "Plan-Provider Mapping" },
                 ]}
                 img={
                   <i class="fa-solid fa-truck-fast font-[300] mr-3 text-[1.2rem]"></i>

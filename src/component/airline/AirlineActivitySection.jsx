@@ -72,16 +72,18 @@ function AirlineActivitySection({ className, id }) {
     getAirlines();
   }, []);
   return (
-    <div className={`${className ? className : "crancy-table"} mg-top-30`}>
+    <div
+      className={`w-full ${className ? className : "crancy-table"} mg-top-30`}
+    >
       <div className="crancy-table__heading">
         <h3 className="crancy-table__title mb-0">Recent Activity</h3>
         <SelectInput
           options={[" Last 7 Days", " Last 15 Days", "Last Month", "Last Year"]}
         />
       </div>
-      <div className="tab-content" id="myTabContent">
+      <div className="tab-content w-full" id="myTabContent">
         <div
-          className="tab-pane fade show active"
+          className="tab-pane fade show active w-full"
           id="table_1"
           role="tabpanel"
           aria-labelledby="table_1"
@@ -153,44 +155,46 @@ function AirlineActivitySection({ className, id }) {
           {/* <!-- End Table Filter --> */}
 
           {/* <!-- crancy Table --> */}
-          <table
-            id="crancy-table__main"
-            className="crancy-table__main crancy-table__main-v1"
-          >
-            {/* <!-- crancy Table Head --> */}
-            <thead className="py-5">
-              <tr className="bg-[#F1F1F1] px-4 py-2">
-                <th className="py-3 px-4">Policy No</th>
-                <th className="py-3 px-4">Airline</th>
-                <th className="py-3 px-4">Date</th>
-                <th className="py-3 px-4">Customer</th>
-                <th className="py-3 px-4">Take Off</th>
-                <th className="py-3 px-4">Destination</th>
-                <th className="py-3 px-4">Status</th>
-              </tr>
-            </thead>
-            {/* <!-- crancy Table Body --> */}
-            <tbody className="">
-              {filterManifest?.map((manifest, index) => {
-                const current = page * show;
-                const previous = current - show;
-                if (
-                  previous > 0 &&
-                  index + 1 > previous &&
-                  index + 1 <= current
-                ) {
-                  return <SingleOrder order={manifest} key={manifest.id} />;
-                } else if (page == 1) {
-                  return (
-                    index < page * show && (
-                      <SingleOrder order={manifest} key={manifest.id} />
-                    )
-                  );
-                }
-              })}
-            </tbody>
-            {/* <!-- End crancy Table Body --> */}
-          </table>
+          <div className="w-full overflow-hidden">
+            <table
+              id="crancy-table__main"
+              className="crancy-table__main crancy-table__main-v1 w-screen  overflow-x-scroll"
+            >
+              {/* <!-- crancy Table Head --> */}
+              <thead className="py-5">
+                <tr className="bg-[#F1F1F1] px-4 py-2">
+                  <th className="py-3 px-4 min-w-38">Policy No</th>
+                  <th className="py-3 px-4 min-w-38">Airline</th>
+                  <th className="py-3 px-4 min-w-38">Date</th>
+                  <th className="py-3 px-4 min-w-38">Customer</th>
+                  <th className="py-3 px-4 min-w-38">Take Off</th>
+                  <th className="py-3 px-4 min-w-38">Destination</th>
+                  <th className="py-3 px-4 min-w-38">Status</th>
+                </tr>
+              </thead>
+              {/* <!-- crancy Table Body --> */}
+              <tbody className="">
+                {filterManifest?.map((manifest, index) => {
+                  const current = page * show;
+                  const previous = current - show;
+                  if (
+                    previous > 0 &&
+                    index + 1 > previous &&
+                    index + 1 <= current
+                  ) {
+                    return <SingleOrder order={manifest} key={manifest.id} />;
+                  } else if (page == 1) {
+                    return (
+                      index < page * show && (
+                        <SingleOrder order={manifest} key={manifest.id} />
+                      )
+                    );
+                  }
+                })}
+              </tbody>
+              {/* <!-- End crancy Table Body --> */}
+            </table>
+          </div>
           <div className="crancy-table-bottom">
             <div id="crancy-table__main_filter" className="dataTables_filter">
               <label>

@@ -4,7 +4,7 @@ import VisitorSource from "./VisitorSource";
 
 function SalesCharts() {
   return (
-    <div className="row crancy-gap-30">
+    <div className="w-full row crancy-gap-30">
       <SaleHistory />
       <VisitorSource />
     </div>

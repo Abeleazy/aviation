@@ -4,7 +4,7 @@ import arrowDown from "../../assets/img/arrow-down.svg";
 import LineChart from "../chart/LineChart";
 
 const data = {
-  labels: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri","Sat"],
+  labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
   datasets: [
     {
       label: "Visitor",
@@ -88,7 +88,7 @@ const options = {
 
 function VisitorSource() {
   return (
-    <div className="col-lg-5 col-md-6 col-12 crancy-sixth-two">
+    <div className="flex flex-1 crancy-sixth-two">
       {/* <!-- Charts Two --> */}
       <div className="charts-main charts-home-two  mg-top-30">
         <div className="charts-main__heading  mg-btm-20 charts-main__heading--v2">

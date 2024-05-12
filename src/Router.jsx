@@ -47,6 +47,7 @@ import Manifest from "./pages/manifest";
 import ManageBatch from "./pages/claims/ManageBatch";
 import ApproveClaims from "./pages/claims/ApproveClaims";
 import ProcessClaims from "./pages/claims/ProcessClaim";
+import CreateProvider from "./pages/provider/CreatePovider";
 
 const router = createBrowserRouter([
   {
@@ -110,6 +111,15 @@ const router = createBrowserRouter([
       {
         path: "/email",
         element: <Email />,
+      },
+      {
+        path: "/providers",
+        children: [
+          {
+            path: "create-provider",
+            element: <CreateProvider />,
+          },
+        ],
       },
       {
         path: "/to-dolist",

@@ -11,8 +11,8 @@ function ProgressCard({
   isCurrecy,
 }) {
   return (
-    <div className="col-xl-3 col-lg-6 col-md-6 col-12 mg-top-30">
-      <div className="crancy-progress-card">
+    <div className="flex flex-1 mg-top-30 mr-3 last:mr-0">
+      <div className=" w-full crancy-progress-card">
         <div className="crancy-progress-card__content">
           <h4 className="crancy-progress-card__title">
             <b className="count-animate">

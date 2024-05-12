@@ -143,7 +143,7 @@ const options = {
 };
 function SaleHistory() {
   return (
-    <div className="col-lg-7 col-md-6 col-12 crancy-sixth-one">
+    <div className="flex flex-2 crancy-sixth-one">
       {/* <!-- Charts One --> */}
       <div className="charts-main charts-home-one mg-top-30">
         {/* <!-- Top Heading --> */}
