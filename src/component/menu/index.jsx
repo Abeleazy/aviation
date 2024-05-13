@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 // import logo from "../../assets/img/logo-dark.png";
 import logoWhite from "../../assets/img/logo-white.png";
@@ -11,17 +11,34 @@ import signInIcon from "../../assets/img/support-sign-icon.svg";
 import Dropdown from "./Dropdown";
 import bg from "../../assets/img/support-bg.png";
 import { toast } from "react-toastify";
+import { useStore } from "../../utils/store/useStore";
 
 function Menu({ toggleMenu, menu }) {
   const [dropdown, setDropdown] = useState(false);
   const location = useLocation();
+  const { userRole } = useStore();
   const handleDropdown = (name) => {
     setDropdown(name === dropdown ? "" : name);
   };
 
+  const admin = userRole.filter((e) => e.name.toLowerCase().includes("admin"));
+  const shareholder = userRole.filter((e) =>
+    e.name.toLowerCase().includes("shareholder")
+  );
+  const airline = userRole.filter((e) =>
+    e.name.toLowerCase().includes("airline")
+  );
+  const beneficiary = userRole.filter((e) =>
+    e.name.toLowerCase().includes("beneficiary")
+  );
+
   const handleComingSoon = () => {
     toast("Coming soon!");
   };
+
+  useEffect(() => {
+    console.log(userRole);
+  }, []);
   return (
     <div
       className={`newMenu fixed w-[18rem] z-[6000]  h-screen`}
@@ -95,117 +112,157 @@ function Menu({ toggleMenu, menu }) {
                   </svg>
                 }
               /> */}
-              <li
-                className={
-                  location.pathname === "/dashboard"
-                    ? "active text-primaryColor"
-                    : ""
-                }
-              >
-                <Link className="collapsed" to="/dashboard">
-                  <span className="flex items-center justify-center">
-                    <i class="fa-solid fa-gauge font-[300] mr-3 text-[1.2rem]"></i>
-                    <span className="text-[1rem] font-[500]">Dashboard</span>
-                  </span>
-                </Link>
-              </li>
-              <li
-                className={
-                  location.pathname === "/airlines"
-                    ? "active text-primaryColor"
-                    : ""
-                }
-              >
-                <Link className="collapsed" to="/airlines">
-                  <span className="flex items-center justify-center">
-                    <i class="fa-regular fa-paper-plane font-[300] mr-3 text-[1.2rem]"></i>
-                    <span className="text-[1rem] font-[500]">Airlines</span>
-                  </span>
-                </Link>
-              </li>
-              <li
-                className={
-                  location.pathname === "/manifest"
-                    ? "active text-primaryColor"
-                    : ""
-                }
-              >
-                <Link className="collapsed" to="/manifest">
-                  <span className="flex items-center justify-center">
-                    <i className="fa-solid fa-chart-line font-[300] mr-3 text-[1.2rem]"></i>
-                    <span className="text-[1rem] font-[500]">Manifest</span>
-                  </span>
-                </Link>
-              </li>
-              <li
-                className={
-                  location.pathname === "/customers"
-                    ? "active text-primaryColor"
-                    : ""
-                }
-              >
-                <Link
-                  className="collapsed"
-                  to="/dashboard"
-                  onClick={handleComingSoon}
+              {(shareholder.length > 0 ||
+                admin.length > 0 ||
+                beneficiary.length > 0) && (
+                <li
+                  className={
+                    location.pathname === "/dashboard"
+                      ? "active text-primaryColor"
+                      : ""
+                  }
                 >
-                  <span className="flex items-center justify-center">
-                    <i class="fa-solid fa-users font-[300] mr-3 text-[1.2rem]"></i>
-                    <span className="text-[1rem] font-[500]">Customers</span>
-                  </span>
-                </Link>
-              </li>
-              <Dropdown
-                name="Claims"
-                dropdown={dropdown}
-                setDropdown={handleDropdown}
-                options={[
-                  { link: "claims/manage-batch", title: "Manage Batch(es)" },
-                  { link: "dashboard", title: "Reset Batch" },
-                  { link: "dashboard", title: "Online Tracker" },
-                  { link: "claims/process-claims", title: "Process Claims" },
-                  { link: "dashboard", title: "Appeal Claims" },
-                  { link: "dashboard", title: "Manage Refunds" },
-                  { link: "claims/approve-claims", title: "Approve Claims" },
-                  { link: "dashboard", title: "Batch for Payment" },
-                  { link: "dashboard", title: "Pay Claims" },
-                  { link: "dashboard", title: "Payment Advise" },
-                ]}
-                img={
-                  <i class="fa-solid fa-pen-nib font-[300] mr-3 text-[1.2rem]"></i>
-                }
-              />
-              <Dropdown
-                name="Provider"
-                dropdown={dropdown}
-                setDropdown={handleDropdown}
-                options={[
-                  {
-                    link: "providers/create-provider",
-                    title: "Create Provider",
-                  },
-                  { link: "dashboard", title: "Endorse Provider" },
-                  { link: "dashboard", title: "No-Auth Mapping" },
-                  { link: "dashboard", title: "Plan-Provider Mapping" },
-                ]}
-                img={
-                  <i class="fa-solid fa-truck-fast font-[300] mr-3 text-[1.2rem]"></i>
-                }
-              />
-              <li
-                className={
-                  location.pathname === "/contracts"
-                    ? "active text-primaryColor"
-                    : ""
-                }
-              >
-                <Link className="collapsed" to="/contracts">
-                  <span className="flex items-center justify-center">
-                    <i class="fa-solid fa-user-tie font-[300] mr-3 text-[1.2rem]"></i>
-                    <span className="text-[1rem] font-[500]">Contracts</span>
-                  </span>
-                </Link>
-              </li>
+                  <Link className="collapsed" to="/dashboard">
+                    <span className="flex items-center justify-center">
+                      <i class="fa-solid fa-gauge font-[300] mr-3 text-[1.2rem]"></i>
+                      <span className="text-[1rem] font-[500]">Dashboard</span>
+                    </span>
+                  </Link>
+                </li>
+              )}
+
+              {(shareholder.length > 0 ||
+                admin.length > 0 ||
+                beneficiary.length > 0) && (
+                <li
+                  className={
+                    location.pathname === "/airlines"
+                      ? "active text-primaryColor"
+                      : ""
+                  }
+                >
+                  <Link className="collapsed" to="/airlines">
+                    <span className="flex items-center justify-center">
+                      <i class="fa-regular fa-paper-plane font-[300] mr-3 text-[1.2rem]"></i>
+                      <span className="text-[1rem] font-[500]">Airlines</span>
+                    </span>
+                  </Link>
+                </li>
+              )}
+              {(shareholder.length > 0 ||
+                admin.length > 0 ||
+                beneficiary.length > 0) && (
+                <li
+                  className={
+                    location.pathname === "/manifest"
+                      ? "active text-primaryColor"
+                      : ""
+                  }
+                >
+                  <Link className="collapsed" to="/manifest">
+                    <span className="flex items-center justify-center">
+                      <i className="fa-solid fa-chart-line font-[300] mr-3 text-[1.2rem]"></i>
+                      <span className="text-[1rem] font-[500]">Manifest</span>
+                    </span>
+                  </Link>
+                </li>
+              )}
+              {admin.length > 0 && (
+                <li
+                  className={
+                    location.pathname === "/customers"
+                      ? "active text-primaryColor"
+                      : ""
+                  }
+                >
+                  <Link
+                    className="collapsed"
+                    to="/dashboard"
+                    onClick={handleComingSoon}
+                  >
+                    <span className="flex items-center justify-center">
+                      <i class="fa-solid fa-users font-[300] mr-3 text-[1.2rem]"></i>
+                      <span className="text-[1rem] font-[500]">Customers</span>
+                    </span>
+                  </Link>
+                </li>
+              )}
+              {admin.length > 0 && (
+                <Dropdown
+                  name="Claims"
+                  dropdown={dropdown}
+                  setDropdown={handleDropdown}
+                  options={[
+                    { link: "claims/manage-batch", title: "Manage Batch(es)" },
+                    { link: "dashboard", title: "Reset Batch" },
+                    { link: "dashboard", title: "Online Tracker" },
+                    { link: "claims/process-claims", title: "Process Claims" },
+                    { link: "dashboard", title: "Appeal Claims" },
+                    { link: "dashboard", title: "Manage Refunds" },
+                    { link: "claims/approve-claims", title: "Approve Claims" },
+                    { link: "dashboard", title: "Batch for Payment" },
+                    { link: "dashboard", title: "Pay Claims" },
+                    { link: "dashboard", title: "Payment Advise" },
+                  ]}
+                  img={
+                    <i class="fa-solid fa-pen-nib font-[300] mr-3 text-[1.2rem]"></i>
+                  }
+                />
+              )}
+
+              {admin.length > 0 && (
+                <Dropdown
+                  name="Provider"
+                  dropdown={dropdown}
+                  setDropdown={handleDropdown}
+                  options={[
+                    {
+                      link: "providers/create-provider",
+                      title: "Create Provider",
+                    },
+                    { link: "dashboard", title: "Endorse Provider" },
+                    { link: "dashboard", title: "No-Auth Mapping" },
+                    { link: "dashboard", title: "Plan-Provider Mapping" },
+                  ]}
+                  img={
+                    <i class="fa-solid fa-truck-fast font-[300] mr-3 text-[1.2rem]"></i>
+                  }
+                />
+              )}
+              {admin.length > 0 && (
+                <li
+                  className={
+                    location.pathname === "/contracts"
+                      ? "active text-primaryColor"
+                      : ""
+                  }
+                >
+                  <Link className="collapsed" to="/contracts">
+                    <span className="flex items-center justify-center">
+                      <i class="fa-solid fa-user-tie font-[300] mr-3 text-[1.2rem]"></i>
+                      <span className="text-[1rem] font-[500]">Contracts</span>
+                    </span>
+                  </Link>
+                </li>
+              )}
+              {shareholder.length > 0 && (
+                <li
+                  className={
+                    location.pathname === "/contracts"
+                      ? "active text-primaryColor"
+                      : ""
+                  }
+                >
+                  <Link className="collapsed" to="/contracts">
+                    <span className="flex items-center justify-center">
+                      <i class="fa-solid fa-user-tie font-[300] mr-3 text-[1.2rem]"></i>
+                      <span className="text-[1rem] font-[500]">
+                        Beneficiaries
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              )}
               {/* <li className={location.pathname === "/inbox" ? "active" : ""}>
                 <Link className="collapsed" to="/inbox">
                   <span className="menu-bar__text">

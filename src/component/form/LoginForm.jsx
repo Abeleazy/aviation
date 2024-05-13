@@ -6,10 +6,13 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Loader from "../loader/index";
+import { useStore } from "../../utils/store/useStore";
 
 function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+
+  const { addUserRole } = useStore();
 
   const navigate = useNavigate();
 
@@ -27,6 +30,7 @@ function LoginForm() {
       );
       if (data.success) {
         localStorage.setItem("x-access-token", data.data.token.token);
+        addUserRole(data.data.roles);
         setIsLoading(false);
         navigate("/dashboard");
       } else {
