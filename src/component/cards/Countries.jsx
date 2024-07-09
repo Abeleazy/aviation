@@ -11,7 +11,7 @@ function Countries() {
 
   const getAllAirlines = async () => {
     const { data } = await axios.get(
-      "https://testaviationmedicals.azurewebsites.net/api/Airline/totalamount-grouped-by-airline"
+      "https://testendpoint.aviationmedicalassist.com:7443/api/Airline/totalamount-grouped-by-airline"
     );
 
     if (data.success) {

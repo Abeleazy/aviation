@@ -15,7 +15,7 @@ function SidebarProfile() {
   const getContract = async () => {
     console.log(id);
     const { data } = await axios.get(
-      `https://testaviationmedicals.azurewebsites.net/api/Shareholder/get-shareholder-by-identity?ShareholderId=${id}`
+      `https://testendpoint.aviationmedicalassist.com:7443/api/Shareholder/get-shareholder-by-identity?ShareholderId=${id}`
     );
 
     if (data.success) {

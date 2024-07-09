@@ -25,7 +25,7 @@ function LoginForm() {
       setIsLoading(true);
       console.log(values);
       const { data } = await axios.post(
-        "https://testaviationmedicals.azurewebsites.net/api/auth/login",
+        "https://testendpoint.aviationmedicalassist.com:7443/api/auth/login",
         values
       );
       if (data.success) {
