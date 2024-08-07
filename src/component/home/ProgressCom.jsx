@@ -8,7 +8,7 @@ function ProgressCom() {
   const [totalRemittance, setTotalRemittance] = useState(0);
   const getAllManifest = async () => {
     const { data } = await axios.get(
-      "https://testendpoint.aviationmedicalassist.com:7443/api/Airline/getallairlinedata"
+      import.meta.env.VITE_BASE_URL + "/Airline/getallairlinedata"
     );
 
     if (data.success) {
@@ -21,7 +21,7 @@ function ProgressCom() {
 
   const getTotalRemittance = async () => {
     const { data } = await axios.get(
-      "https://testendpoint.aviationmedicalassist.com:7443/api/Airline/totalamount"
+      import.meta.env.VITE_BASE_URL + "/Airline/totalamount"
     );
 
     if (data.success) {

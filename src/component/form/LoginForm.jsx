@@ -25,7 +25,7 @@ function LoginForm() {
       setIsLoading(true);
       console.log(values);
       const { data } = await axios.post(
-        "https://testendpoint.aviationmedicalassist.com:7443/api/auth/login",
+        import.meta.env.VITE_BASE_URL + "/auth/login",
         values
       );
       if (data.success) {

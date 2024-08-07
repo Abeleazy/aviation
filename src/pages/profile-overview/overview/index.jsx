@@ -52,7 +52,8 @@ function Overview() {
   const getContract = async () => {
     console.log(id);
     const { data } = await axios.get(
-      `https://testendpoint.aviationmedicalassist.com:7443/api/Shareholder/get-shareholder-by-identity?ShareholderId=${id}`
+      import.meta.env.VITE_BASE_URL +
+        `/Shareholder/get-shareholder-by-identity?ShareholderId=${id}`
     );
 
     if (data.success) {

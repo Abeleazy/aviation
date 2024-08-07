@@ -19,7 +19,7 @@ function AirlineActivity() {
 
   const getAirlines = async () => {
     const { data } = await axios.get(
-      "https://testendpoint.aviationmedicalassist.com:7443/api/airline/get-airline"
+      import.meta.env.VITE_BASE_URL + "/airline/get-airline"
     );
     if (data.success) {
       console.log(data.data);
